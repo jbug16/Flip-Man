@@ -1,0 +1,1 @@
+if (global.dev_mode) game_end();

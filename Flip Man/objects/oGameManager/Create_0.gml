@@ -1,5 +1,13 @@
 // Globals
-global.highscore = 10000;
+global.highscore = 0;
+
+// Load highscore from ini file
+if (file_exists("highscore.ini")) {
+	var _ini = ini_open("highscore.ini");
+	global.highscore = ini_read_real("Highscore", "score", 10000);
+	ini_close();
+}
+
 global.points = 0;
 global.extra_lives = 0;
 global.snacks = 0;

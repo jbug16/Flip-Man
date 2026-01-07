@@ -1,3 +1,2 @@
-// Menu state
-menu_selection = 0; // 0 = 1 PLAYER, 1 = 2 PLAYERS
+// Blink timer for "INSERT COIN" text
 arrow_blink = 0;

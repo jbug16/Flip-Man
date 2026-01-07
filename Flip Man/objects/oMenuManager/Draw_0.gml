@@ -1,67 +1,66 @@
-// Settings
-draw_set_font(fntPixel);
+// Positions
+var _center_x = room_width / 2;
+var _score_y = 8;
+var _score_line_spacing = 12;
+var _logo_y = 100;
+var _insert_coin_y = room_height / 2;
+var _copyright_y = 240;
+var _copyright_line_spacing = 15;
+
+// Colors
+var _color_red = make_color_rgb(255, 0, 0);
+var _color_logo = make_color_rgb(255, 200, 0); // Bright orange-yellow
+
+
+// Title
+draw_set_font(fntTitle);
+draw_set_color(_color_logo);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+
+var _title_text = "FLIP-MAN";
+var _title_width = string_width(_title_text);
+
+draw_sprite_ext(sTitleBG, 0, _center_x, _logo_y, 13, 3, 0, c_white, 1);
+draw_text(_center_x, _logo_y, _title_text);
+
+// TM symbol
+draw_set_font(fntUI);
 draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
+//draw_text(_center_x + (_title_width / 2) + 4, _logo_y - 18, "TM");
 
-// Score display at top
-var _score_y = 20;
-var _score_left = 40;
-var _score_center = room_width / 2;
-var _score_right = room_width - 40;
 
-// 1UP
-draw_set_halign(fa_left);
+// Insert coin
+draw_set_font(fntUI);
 draw_set_color(c_white);
-draw_text(_score_left, _score_y, "1UP");
-draw_text(_score_left, _score_y + 20, "00");
-
-// HI-SCORE (centered)
 draw_set_halign(fa_center);
-draw_text(_score_center, _score_y, "HI-SCORE");
-draw_text(_score_center, _score_y + 20, string(global.highscore));
+draw_set_valign(fa_top);
 
-// 2UP
-draw_set_halign(fa_right);
-draw_text(_score_right, _score_y, "2UP");
-draw_text(_score_right, _score_y + 20, "00");
-
-// Player selection menu (below title)
-var _menu_x = room_width / 2;
-var _menu_y = 400; // Adjust based on your title position
-var _menu_spacing = 40;
-
-// Arrow indicator (blinking)
-arrow_blink += 0.1;
-var _arrow_alpha = 0.5 + 0.5 * abs(sin(arrow_blink));
-
-draw_set_halign(fa_left);
-draw_set_color(c_white);
-draw_set_alpha(_arrow_alpha);
-
-// Draw arrow for selected option
-if (menu_selection == 0) {
-    draw_text(_menu_x - 100, _menu_y, ">");
-} else {
-    draw_text(_menu_x - 100, _menu_y + _menu_spacing, ">");
+var _text_visible = (abs(sin(arrow_blink)) > 0.3);
+if (_text_visible) {
+    draw_text(_center_x, _insert_coin_y, "INSERT COIN");
 }
 
-// Player options
-draw_set_alpha(1);
-draw_set_halign(fa_center);
-draw_text(_menu_x, _menu_y, "1 PLAYER");
-draw_text(_menu_x, _menu_y + _menu_spacing, "2 PLAYERS");
 
-// Copyright text at bottom
+// Copyright (bottom)
+draw_set_font(fntUI);
 draw_set_halign(fa_center);
-var _copyright_y = room_height - 100;
-draw_set_color(c_red);
-draw_text(room_width / 2, _copyright_y, "Flip Man®");
+draw_set_valign(fa_top);
+
+// "namco®" in red
+draw_set_color(_color_red);
+draw_text(_center_x, _copyright_y, "namco");
+draw_text(_center_x+25, _copyright_y-4, "®");
+
 draw_set_color(c_white);
-draw_text(room_width / 2, _copyright_y + 25, "TM & © 2026");
-draw_text(room_width / 2, _copyright_y + 50, "LICENSED BY GAMEMAKER STUDIO");
+draw_text(_center_x, _copyright_y + _copyright_line_spacing, "TM & © 1980 1993 NAMCO LTD.");
+draw_text(_center_x, _copyright_y + (_copyright_line_spacing * 2), "NAMCO HOMETEK, INC.");
+draw_text(_center_x, _copyright_y + (_copyright_line_spacing * 3), "LICENSED BY NINTENDO");
 
-// Reset drawing settings
-draw_set_alpha(1);
+
+// Reset settings
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
+draw_set_color(c_white);

@@ -1,7 +1,7 @@
 {
   "$GMRoom":"v1",
   "%Name":"rInit",
-  "creationCodeFile":"",
+  "creationCodeFile":"rooms/rInit/RoomCreationCode.gml",
   "inheritCode":false,
   "inheritCreationOrder":false,
   "inheritLayers":false,
@@ -31,7 +31,7 @@
   "resourceType":"GMRoom",
   "resourceVersion":"2.0",
   "roomSettings":{
-    "Height":240,
+    "Height":320,
     "inheritRoomSettings":false,
     "persistent":false,
     "Width":256,

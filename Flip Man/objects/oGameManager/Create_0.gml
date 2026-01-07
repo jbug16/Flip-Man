@@ -9,6 +9,7 @@ global.dev_mode = true;
 // Macros
 #macro print show_debug_message
 #macro SECOND 60
+#macro GRID 16
 
 // Settings
 gpu_set_texfilter(false);

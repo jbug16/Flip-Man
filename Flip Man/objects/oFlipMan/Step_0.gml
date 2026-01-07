@@ -15,7 +15,7 @@ if (_toy != noone) {
 	global.points += 50;
 	
 	// Trigger ghost mode
-	with (oNerd) {
+	with (parNerd) {
 		ghost_mode = true;
 		alarm[0] = SECOND * 6;
 	}
@@ -54,3 +54,11 @@ if (keyboard_check(vk_down)) {
 
 // Collision
 move_contact_solid(direction, spd);
+
+// Goes off screen, loop around
+if (x < -0) { // LEFT
+	x = room_width;
+}
+else if (x > room_width) { // RIGHT
+	x = 0;
+}

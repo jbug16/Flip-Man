@@ -4,7 +4,7 @@ var _score_y = 8;
 var _score_line_spacing = 12;
 var _logo_y = 100;
 var _insert_coin_y = room_height / 2;
-var _copyright_y = 240;
+var _copyright_y = 255;
 var _copyright_line_spacing = 15;
 
 // Colors

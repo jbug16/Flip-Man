@@ -229,3 +229,87 @@ function blue_ghost_ai() {
 		direction = new_dir;
 	}
 }
+
+function scatter_ai() {
+	// Movement toward scatter corner position
+	var new_dir = -1;
+	var distance_to_corner = 9999999;
+	
+	var target_x = scatter_x;
+	var target_y = scatter_y;
+
+	if (direction != 270) { // UP
+		if (!place_meeting(x, y-2, oWall)) {
+			var _dist = point_distance(x, y-GRID, target_x, target_y);
+			if (_dist < distance_to_corner) {
+				new_dir	= 90;
+				distance_to_corner = _dist;
+			}
+		}
+	}
+
+	if (direction != 90) { // DOWN
+		if (!place_meeting(x, y+2, oWall)) {
+			var _dist = point_distance(x, y+GRID, target_x, target_y);
+			if (_dist < distance_to_corner) {
+				new_dir	= 270;
+				distance_to_corner = _dist;
+			}
+		}
+	}
+
+	if (direction != 0) { // LEFT
+		if (!place_meeting(x-2, y, oWall)) {
+			var _dist = point_distance(x-GRID, y, target_x, target_y);
+			if (_dist < distance_to_corner) {
+				new_dir	= 180;
+				distance_to_corner = _dist;
+			}
+		}
+	}
+
+	if (direction != 180) { // RIGHT
+		if (!place_meeting(x+2, y, oWall)) {
+			var _dist = point_distance(x+GRID, y, target_x, target_y);
+			if (_dist < distance_to_corner) {
+				new_dir	= 0;
+				distance_to_corner = _dist;
+			}
+		}
+	}
+
+	if (new_dir != -1) {
+		direction = new_dir;
+	}
+}
+
+function frightened_ai() {
+	// Random movement - choose random valid direction
+	// In FRIGHTENED mode, nerds can reverse direction (unlike CHASE/SCATTER)
+	var valid_dirs = array_create(4);
+	var count = 0;
+	
+	// Check all directions (no restriction on reversing)
+	if (!place_meeting(x, y-2, oWall)) { // UP
+		valid_dirs[count] = 90;
+		count++;
+	}
+	if (!place_meeting(x, y+2, oWall)) { // DOWN
+		valid_dirs[count] = 270;
+		count++;
+	}
+	if (!place_meeting(x-2, y, oWall)) { // LEFT
+		valid_dirs[count] = 180;
+		count++;
+	}
+	if (!place_meeting(x+2, y, oWall)) { // RIGHT
+		valid_dirs[count] = 0;
+		count++;
+	}
+	
+	// Pick random direction from valid options
+	if (count > 0) {
+		var _random_idx = irandom(count - 1);
+		direction = valid_dirs[_random_idx];
+	}
+}

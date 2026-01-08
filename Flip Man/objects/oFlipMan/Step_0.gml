@@ -14,7 +14,19 @@ if (_coin != noone) {
 		ini_close();
 	}
 	
+	// Track coins eaten for snack spawning
+	oLevelManager.coins_eaten++;
+	
 	instance_destroy(_coin);
+	return;
+}
+
+// Snacks
+var _snack = collision_rectangle(x-6, y-4, x+6, y+4, oSnack, false, false);
+if (_snack != noone) {
+	// Clear snack_active reference and destroy snack
+	oLevelManager.snack_active = noone;
+	instance_destroy(_snack);
 	return;
 }
 
@@ -31,10 +43,15 @@ if (_toy != noone) {
 		ini_close();
 	}
 	
-	// Trigger ghost mode
+	// Trigger FRIGHTENED state for all nerds
 	with (parNerd) {
-		ghost_mode = true;
-		alarm[0] = SECOND * 6;
+		if (nerd_state != STATE_DEAD) {
+			// Only set FRIGHTENED if not already dead
+			nerd_state = STATE_FRIGHTENED;
+			alarm[0] = frightened_duration;
+			ghost_mode = true; // Keep for backward compatibility
+			// Turn around will be handled in parNerd Step_0 when sprite changes
+		}
 	}
 	
 	instance_destroy(_toy);

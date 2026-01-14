@@ -10,7 +10,7 @@ ghost_mode = false; // Kept for backward compatibility during transition
 
 // Speed settings
 spd = 0.8;
-spd_frightened_mult = 0.5; // Speed multiplier for FRIGHTENED state
+spd_frightened = 0.55; // Speed for FRIGHTENED state
 
 // Scatter corner position (placeholder - will be overridden in individual nerd Create events)
 scatter_x = 0;

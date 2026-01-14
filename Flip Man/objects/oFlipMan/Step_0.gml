@@ -47,10 +47,13 @@ if (_toy != noone) {
 	with (parNerd) {
 		if (nerd_state != STATE_DEAD) {
 			// Only set FRIGHTENED if not already dead
+			// Turn around immediately when entering frightened mode
+			if (nerd_state != STATE_FRIGHTENED) {
+				direction = (direction + 180) mod 360;
+			}
 			nerd_state = STATE_FRIGHTENED;
 			alarm[0] = frightened_duration;
 			ghost_mode = true; // Keep for backward compatibility
-			// Turn around will be handled in parNerd Step_0 when sprite changes
 		}
 	}
 	

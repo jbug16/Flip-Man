@@ -285,31 +285,39 @@ function scatter_ai() {
 
 function frightened_ai() {
 	// Random movement - choose random valid direction
-	// In FRIGHTENED mode, nerds can reverse direction (unlike CHASE/SCATTER)
-	var valid_dirs = array_create(4);
-	var count = 0;
+	var choices = [];
+	var number_of_choices = 0;
 	
-	// Check all directions (no restriction on reversing)
-	if (!place_meeting(x, y-2, oWall)) { // UP
-		valid_dirs[count] = 90;
-		count++;
-	}
-	if (!place_meeting(x, y+2, oWall)) { // DOWN
-		valid_dirs[count] = 270;
-		count++;
-	}
-	if (!place_meeting(x-2, y, oWall)) { // LEFT
-		valid_dirs[count] = 180;
-		count++;
-	}
-	if (!place_meeting(x+2, y, oWall)) { // RIGHT
-		valid_dirs[count] = 0;
-		count++;
+	// Check all directions (can't reverse direction)
+	if (direction != 270) { // UP
+		if (!place_meeting(x, y-2, oWall)) {
+			choices[number_of_choices] = 90;
+			++number_of_choices;
+		}
 	}
 	
-	// Pick random direction from valid options
-	if (count > 0) {
-		var _random_idx = irandom(count - 1);
-		direction = valid_dirs[_random_idx];
+	if (direction != 90) { // DOWN
+		if (!place_meeting(x, y+2, oWall)) {
+			choices[number_of_choices] = 270;
+			++number_of_choices;
+		}
+	}
+	
+	if (direction != 0) { // LEFT
+		if (!place_meeting(x-2, y, oWall)) {
+			choices[number_of_choices] = 180;
+			++number_of_choices;
+		}
+	}
+	
+	if (direction != 180) { // RIGHT
+		if (!place_meeting(x+2, y, oWall)) {
+			choices[number_of_choices] = 0;
+			++number_of_choices;
+		}
+	}
+	
+	if (number_of_choices > 0) {
+		direction = choices[irandom(number_of_choices - 1)];
 	}
 }

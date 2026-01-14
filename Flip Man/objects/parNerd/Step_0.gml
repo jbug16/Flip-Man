@@ -28,7 +28,6 @@ if (nerd_state != STATE_FRIGHTENED && nerd_state != STATE_DEAD) {
 }
 
 // Handle sprite changes based on state
-var _previous_sprite = sprite_index;
 if (nerd_state == STATE_FRIGHTENED) {
 	if (sprite_index != ghost_sprite) {
 		sprite_index = ghost_sprite;
@@ -38,27 +37,16 @@ if (nerd_state == STATE_FRIGHTENED) {
 		sprite_index = nerd_sprite;
 	}
 }
-// Turn around only when transitioning between FRIGHTENED and non-FRIGHTENED
-// (CHASE/SCATTER transitions are handled above)
-if (_previous_sprite != sprite_index && nerd_state != STATE_DEAD) {
-	// Only turn around if this is a FRIGHTENED state transition
-	// (entering or exiting FRIGHTENED mode)
-	var _was_frightened = (_previous_state == STATE_FRIGHTENED);
-	var _is_frightened = (nerd_state == STATE_FRIGHTENED);
-	if (_was_frightened != _is_frightened) {
-		direction = (direction + 180) mod 360;
-	}
-}
 
 // Calculate movement speed based on state
 var _current_spd = spd;
 if (nerd_state == STATE_FRIGHTENED) {
-	_current_spd = spd * spd_frightened_mult;
+	_current_spd = spd_frightened;
 }
+else _current_spd = spd;
 
-// Movement - execute AI based on state
+// Movement
 if (nerd_state == STATE_CHASE) {
-	// Use assigned AI function (red_ghost_ai, pink_ghost_ai, etc.)
 	script_execute(ai);
 } else if (nerd_state == STATE_SCATTER) {
 	// Move toward scatter corner

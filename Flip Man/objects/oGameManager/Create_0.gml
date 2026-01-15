@@ -9,7 +9,7 @@ if (file_exists("highscore.ini")) {
 }
 
 global.points = 0;
-global.extra_lives = 0;
+global.extra_lives = 1;
 global.snacks = 0;
 
 global.dev_mode = true;

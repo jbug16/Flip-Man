@@ -38,7 +38,7 @@ repeat (global.extra_lives) {
 }
 
 // Snacks
-repeat (3) {
+repeat (global.snacks) {
 	draw_sprite(sSnacks, 0, _right_x, _bottom_y);
 	_right_x -= _spacing;
 }

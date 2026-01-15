@@ -57,48 +57,50 @@ if (nerd_state == STATE_SCATTER) {
 	_target_y = scatter_y;
 	_has_target = true;
 } else if (nerd_state == STATE_CHASE) {
-	// Chase mode: target depends on AI type
-	if (ai == red_ghost_ai) {
-		// Red: Directly targets FlipMan
-		_target_x = oFlipMan.x;
-		_target_y = oFlipMan.y;
-		_has_target = true;
-		_col = c_red;
-	} else if (ai == pink_ghost_ai) {
-		// Pink: Targets 4 tiles ahead of FlipMan's direction
-		var _size = GRID * 4;
-		var x_dirs = [_size, -_size, -_size, 0];
-		var y_dirs = [0, -_size, 0, _size];
-		var dx = x_dirs[oFlipMan.direction / 90];
-		var dy = y_dirs[oFlipMan.direction / 90];
-		_target_x = oFlipMan.x + dx;
-		_target_y = oFlipMan.y + dy;
-		_has_target = true;
-		_col = c_fuchsia;
-	} else if (ai == orange_ghost_ai) {
-		// Orange: Targets FlipMan if far, otherwise scatter corner
-		if (point_distance(x, y, oFlipMan.x, oFlipMan.y) < 160) {
-			_target_x = 16;
-			_target_y = 296;
-		} else {
+	if (instance_exists(oFlipMan)) {
+		// Chase mode: target depends on AI type
+		if (ai == red_ghost_ai) {
+			// Red: Directly targets FlipMan
 			_target_x = oFlipMan.x;
 			_target_y = oFlipMan.y;
+			_has_target = true;
+			_col = c_red;
+		} else if (ai == pink_ghost_ai) {
+			// Pink: Targets 4 tiles ahead of FlipMan's direction
+			var _size = GRID * 4;
+			var x_dirs = [_size, -_size, -_size, 0];
+			var y_dirs = [0, -_size, 0, _size];
+			var dx = x_dirs[oFlipMan.direction / 90];
+			var dy = y_dirs[oFlipMan.direction / 90];
+			_target_x = oFlipMan.x + dx;
+			_target_y = oFlipMan.y + dy;
+			_has_target = true;
+			_col = c_fuchsia;
+		} else if (ai == orange_ghost_ai) {
+			// Orange: Targets FlipMan if far, otherwise scatter corner
+			if (point_distance(x, y, oFlipMan.x, oFlipMan.y) < 160) {
+				_target_x = 16;
+				_target_y = 296;
+			} else {
+				_target_x = oFlipMan.x;
+				_target_y = oFlipMan.y;
+			}
+			_has_target = true;
+			_col = c_orange;
+		} else if (ai == blue_ghost_ai) {
+			// Blue: Targets position based on Howard and FlipMan
+			var _size = GRID * 2;
+			var x_dirs = [_size, -_size, -_size, 0];
+			var y_dirs = [0, -_size, 0, _size];
+			var dx = oNerdHoward.x + x_dirs[oFlipMan.direction / 90];
+			var dy = oNerdHoward.y + y_dirs[oFlipMan.direction / 90];
+			var ddx = oNerdHoward.x - dx;
+			var ddy = oNerdHoward.y - dy;
+			_target_x = dx - ddx;
+			_target_y = dy - ddy;
+			_has_target = true;
+			_col = c_blue;
 		}
-		_has_target = true;
-		_col = c_orange;
-	} else if (ai == blue_ghost_ai) {
-		// Blue: Targets position based on Howard and FlipMan
-		var _size = GRID * 2;
-		var x_dirs = [_size, -_size, -_size, 0];
-		var y_dirs = [0, -_size, 0, _size];
-		var dx = oNerdHoward.x + x_dirs[oFlipMan.direction / 90];
-		var dy = oNerdHoward.y + y_dirs[oFlipMan.direction / 90];
-		var ddx = oNerdHoward.x - dx;
-		var ddy = oNerdHoward.y - dy;
-		_target_x = dx - ddx;
-		_target_y = dy - ddy;
-		_has_target = true;
-		_col = c_blue;
 	}
 }
 

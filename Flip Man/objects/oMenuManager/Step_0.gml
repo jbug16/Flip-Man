@@ -5,5 +5,5 @@ arrow_blink += 0.1;
 if (keyboard_check_pressed(vk_anykey)) {
     // Start game
     room_goto(rLevel1);
-    print("Start game");
+    audio_play_sound(sndStartup, 1, false);
 }

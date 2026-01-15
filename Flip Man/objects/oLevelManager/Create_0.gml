@@ -9,4 +9,4 @@ snack_spawned_second = false;
 snack_active = noone;
 
 // Delay for game start
-alarm[0] = SECOND * 2;
+alarm[0] = SECOND * audio_sound_length(sndStartup);

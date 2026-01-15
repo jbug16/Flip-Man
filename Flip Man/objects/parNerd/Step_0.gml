@@ -45,6 +45,20 @@ if (nerd_state == STATE_FRIGHTENED) {
 }
 else _current_spd = spd;
 
+// SFX
+if (nerd_state == STATE_FRIGHTENED) {
+	if (!audio_is_playing(sndGhostFright)) {
+		audio_stop_sound(sndGhostSiren);
+		audio_play_sound(sndGhostFright, 1, true);
+	}
+}
+else {
+	if (!audio_is_playing(sndGhostSiren)) {
+		audio_stop_sound(sndGhostFright);
+		audio_play_sound(sndGhostSiren, 1, true);
+	}
+}
+
 // Movement
 if (nerd_state == STATE_CHASE) {
 	script_execute(ai);

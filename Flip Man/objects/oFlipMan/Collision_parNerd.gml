@@ -34,6 +34,6 @@ if (other.nerd_state == STATE_FRIGHTENED) {
 	else {
 		// Still have drawn lives remaining
 		global.extra_lives--;
-		room_restart(); // need to replace player instead and play startup audio again
+		LevelRestart();
 	}
 }

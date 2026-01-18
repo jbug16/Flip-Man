@@ -1,5 +1,5 @@
 // Don't move if game hasn't started or is over
-if (!oLevelManager.start || oLevelManager.over) exit;
+if (!oLevelManager.start || oLevelManager.over || oLevelManager.won) exit;
 
 // Coins
 var _coin = collision_rectangle(x-6, y-4, x+6, y+4, oCoin, false, false);
@@ -16,6 +16,13 @@ if (_coin != noone) {
 	audio_play_sound(sfx_cur, 1, false);
 	
 	instance_destroy(_coin);
+	
+	// Check if this was the last coin
+	if (instance_number(oCoin) <= 230) {
+		oLevelManager.won = true;
+		audio_stop_all();
+		oLevelManager.alarm[2] = SECOND * 2;
+	}
 	
 	return;
 }

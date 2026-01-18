@@ -47,9 +47,32 @@ repeat (global.snacks) {
 // SIGN
 draw_set_color(c_black);
 draw_set_valign(fa_middle);
-var _name = "Tarjayy";
+var _name, _index;
 
-draw_sprite_ext(sSignBG, 0, 128, 37, 4, 1, 0, c_white, 1);
+switch (room) {
+	case rLevel1:
+		_name = "Tarjayy";
+		_index = 0;
+		break;
+		
+	case rLevel2:
+		_name = "Walmaria";
+		_index = 1;
+		break;
+		
+	case rLevel3:
+		_name = "ToyzaRius";
+		_index = 2;
+		break;
+	
+	default:
+		_name = "ERROR";
+		_index = 3;
+		break;
+}
+		
+
+draw_sprite_ext(sSignBG, _index, 128, 37, 4, 1, 0, c_white, 1);
 draw_text(128, 37, _name);
 
 // Reset settings

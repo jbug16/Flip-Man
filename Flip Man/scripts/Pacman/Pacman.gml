@@ -13,3 +13,82 @@ function CheckHighscore() {
 		}
 	}
 }
+
+function LevelRestart() {
+	// Player is placed back in starting point
+	// "Ready!" text appears
+	// Enemies are reset to starting point
+	// Level is otherwise unchanged 
+	
+	// Starting positions from room definition
+	var _player_start_x = 128;
+	var _player_start_y = 236;
+	
+	// Recreate player at starting position if it doesn't exist (player was destroyed on death)
+	if (!instance_exists(oFlipMan)) {
+		instance_create_layer(_player_start_x, _player_start_y, "Player", oFlipMan);
+	} else {
+		// If player exists, just move to start position
+		with (oFlipMan) {
+			x = _player_start_x;
+			y = _player_start_y;
+			// Reset player direction
+			direction = 180;
+			image_xscale = 1;
+		}
+	}
+	
+	// Reset all nerds to their starting positions and states
+	// Nerd starting positions from room definition
+	with (oNerdLeonard) {
+		x = 92;
+		y = 140;
+		nerd_state = STATE_CHASE;
+		ghost_mode = false;
+		state_timer = chase_duration;
+		is_chase_phase = true;
+		direction = 180;
+		alarm[0] = -1; // Clear any active alarms
+	}
+	
+	with (oNerdHoward) {
+		x = 116;
+		y = 140;
+		nerd_state = STATE_CHASE;
+		ghost_mode = false;
+		state_timer = chase_duration;
+		is_chase_phase = true;
+		direction = 180;
+		alarm[0] = -1; // Clear any active alarms
+	}
+	
+	with (oNerdRaj) {
+		x = 140;
+		y = 140;
+		nerd_state = STATE_CHASE;
+		ghost_mode = false;
+		state_timer = chase_duration;
+		is_chase_phase = true;
+		direction = 180;
+		alarm[0] = -1; // Clear any active alarms
+	}
+	
+	with (oNerdSheldon) {
+		x = 164;
+		y = 140;
+		nerd_state = STATE_CHASE;
+		ghost_mode = false;
+		state_timer = chase_duration;
+		is_chase_phase = true;
+		direction = 180;
+		alarm[0] = -1; // Clear any active alarms
+	}
+	
+	// Reset LevelManager to show "Ready!" screen
+	with (oLevelManager) {
+		ready = true;   // Show "Ready!" text
+		start = false;  // Player can't move yet
+		// Set alarm to start the game after startup sound
+		alarm[0] = SECOND * audio_sound_length(sndPacmanDying) + 1;
+	}
+}

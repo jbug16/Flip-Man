@@ -1,5 +1,5 @@
 // Don't move if game hasn't started or is over
-if (!oLevelManager.start || oLevelManager.over) exit;
+if (!oLevelManager.start || oLevelManager.over || oLevelManager.won) exit;
 
 // Don't move if dead
 if (nerd_state == STATE_DEAD) exit;

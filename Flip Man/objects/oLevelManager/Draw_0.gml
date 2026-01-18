@@ -14,6 +14,17 @@ else if (over) {
 	draw_set_color(c_red);
 	draw_text(_mid_x, _mid_y, "GAME OVER");
 }
+else if (won) {
+	blink_counter++;
+	
+    var _blink_speed = 10; 
+    var _blink_on = ((blink_counter div _blink_speed) mod 2 == 0);
+    
+    if (_blink_on) {
+        // Draw white sprite at same position as level sprite
+        draw_sprite_ext(sLevels, 3, 16, 48, 1, 1, 0, c_white, 1);
+    }
+}
 
 // Nerd label
 draw_set_font(fntSmall);

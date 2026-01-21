@@ -1,6 +1,10 @@
 // Inherit the parent event
 event_inherited();
 
+// Store starting position for respawning
+start_x = x;
+start_y = y;
+
 ai = orange_ghost_ai;
 image_index = 2;
 

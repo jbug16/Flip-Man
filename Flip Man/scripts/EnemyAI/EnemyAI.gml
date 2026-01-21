@@ -29,6 +29,62 @@ function box_exit_ai() {
 	}
 }
 
+function dead_ghost_ai() {
+	// Move dead ghost back to box center
+	// Dead ghosts can pass through doors (ignore oNerdDoor collisions)
+	var new_dir = -1;
+	var distance_to_box = 9999999;
+	
+	var target_x = box_exit_x;
+	var target_y = box_exit_y;
+
+	// Check all directions (can't reverse direction)
+	// Dead ghosts ignore oNerdDoor collisions
+	if (direction != 270) { // UP
+		if (!place_meeting(x, y-2, oWall)) {
+			var _dist = point_distance(x, y-GRID, target_x, target_y);
+			if (_dist < distance_to_box) {
+				new_dir = 90;
+				distance_to_box = _dist;
+			}
+		}
+	}
+	
+	if (direction != 90) { // DOWN
+		if (!place_meeting(x, y+2, oWall)) {
+			var _dist = point_distance(x, y+GRID, target_x, target_y);
+			if (_dist < distance_to_box) {
+				new_dir = 270;
+				distance_to_box = _dist;
+			}
+		}
+	}
+	
+	if (direction != 0) { // LEFT
+		if (!place_meeting(x-2, y, oWall)) {
+			var _dist = point_distance(x-GRID, y, target_x, target_y);
+			if (_dist < distance_to_box) {
+				new_dir = 180;
+				distance_to_box = _dist;
+			}
+		}
+	}
+	
+	if (direction != 180) { // RIGHT
+		if (!place_meeting(x+2, y, oWall)) {
+			var _dist = point_distance(x+GRID, y, target_x, target_y);
+			if (_dist < distance_to_box) {
+				new_dir = 0;
+				distance_to_box = _dist;
+			}
+		}
+	}
+	
+	if (new_dir != -1) {
+		direction = new_dir;
+	}
+}
+
 function red_ghost_ai() {
 	// Movement
 	var new_dir = -1;

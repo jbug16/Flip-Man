@@ -1,3 +1,8 @@
+// Ignore collision if nerd is in box states (IN_BOX or OUT_BOX) or DEAD
+if (other.nerd_state == s.DEAD || other.nerd_state == s.IN_BOX || other.nerd_state == s.OUT_BOX) {
+	exit;
+}
+
 // Check if nerd is in FRIGHTENED state
 if (other.nerd_state == s.FRIGHTENED) {
 	// Award points for eating frightened nerd
@@ -6,11 +11,18 @@ if (other.nerd_state == s.FRIGHTENED) {
 	
 	CheckHighscore();
 	
-	// Destroy the nerd (respawn logic will be added later)
+	// Teleport nerd to box center and set to IN_BOX state for respawn
 	with (other) {
-		nerd_state = s.DEAD;
+		// Teleport to box center (all nerds respawn at same position)
+		x = box_exit_x;
+		y = box_exit_y;
+		nerd_state = s.IN_BOX;
+		alarm[0] = box_wait_time;
+		// Reset state for respawn
+		ghost_mode = false;
+		pending_frightened = false;
+		frightened_timer = -1;
 		audio_play_sound(sndGhostBackToBase, 1, false); // needs to loop and only play once, should stop when ghost gets to base
-		instance_destroy();
 	}
 } else {
 	// Nerd is not frightened - player gets hit

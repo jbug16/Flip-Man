@@ -1,5 +1,9 @@
 event_inherited();
 
+// Store starting position for respawning
+start_x = x;
+start_y = y;
+
 nerd_sprite = sprite_index;
 ghost_sprite = sprite_index;
 sprite_index = nerd_sprite;

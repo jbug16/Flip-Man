@@ -33,6 +33,10 @@ frightened_duration = SECOND * 6;
 box_exit_x = 128;
 box_exit_y = 140;
 
+// Starting position (will be set in individual enemy Create events)
+start_x = 0;
+start_y = 0;
+
 // How long they are in the box
 box_wait_time = 0;
 

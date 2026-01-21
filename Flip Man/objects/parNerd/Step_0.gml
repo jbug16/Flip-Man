@@ -1,9 +1,6 @@
 // Don't move if game hasn't started or is over
 if (!oLevelManager.start || oLevelManager.over || oLevelManager.won) exit;
 
-// Don't move if dead
-if (nerd_state == s.DEAD) exit;
-
 // Start box exit timer when game starts (if still in IN_BOX state)
 if (nerd_state == s.IN_BOX && alarm[0] == -1 && oLevelManager.start) {
 	alarm[0] = box_wait_time;
@@ -31,8 +28,8 @@ if (nerd_state == s.IN_BOX) {
 // Track previous state before any transitions
 var _previous_state = nerd_state;
 
-// Handle CHASE/SCATTER cycle timing (exclude IN_BOX, OUT_BOX, FRIGHTENED, and DEAD states)
-if (nerd_state != s.FRIGHTENED && nerd_state != s.DEAD && nerd_state != s.IN_BOX && nerd_state != s.OUT_BOX) {
+// Handle CHASE/SCATTER cycle timing (exclude IN_BOX, OUT_BOX, and FRIGHTENED states)
+if (nerd_state != s.FRIGHTENED && nerd_state != s.IN_BOX && nerd_state != s.OUT_BOX) {
 	state_timer--;
 	
 	if (state_timer <= 0) {
@@ -53,6 +50,7 @@ if (nerd_state != s.FRIGHTENED && nerd_state != s.DEAD && nerd_state != s.IN_BOX
 
 // Handle sprite changes based on state
 // Show ghost sprite if FRIGHTENED or if IN_BOX/OUT_BOX with pending_frightened flag
+// DEAD state uses normal sprite (not ghost sprite)
 if (nerd_state == s.FRIGHTENED || ((nerd_state == s.IN_BOX || nerd_state == s.OUT_BOX) && pending_frightened)) {
 	if (sprite_index != ghost_sprite) {
 		sprite_index = ghost_sprite;

@@ -2,7 +2,7 @@
 var _should_blink = false;
 var _blink_white = false;
 
-if (nerd_state == STATE_FRIGHTENED) {
+if (nerd_state == s.FRIGHTENED) {
 	// Blink during the last 2 seconds (120 frames) before returning to chase/scatter
 	var _time_remaining = alarm[0];
 	if (_time_remaining <= SECOND * 2) {
@@ -26,13 +26,17 @@ if (!global.dev_mode) exit;
 
 // Get state name
 var _state_name = "?";
-if (nerd_state == STATE_CHASE) {
+if (nerd_state == s.IN_BOX) {
+	_state_name = "IB";
+} else if (nerd_state == s.OUT_BOX) {
+	_state_name = "OB";
+} else if (nerd_state == s.CHASE) {
 	_state_name = "C";
-} else if (nerd_state == STATE_SCATTER) {
+} else if (nerd_state == s.SCATTER) {
 	_state_name = "S";
-} else if (nerd_state == STATE_FRIGHTENED) {
+} else if (nerd_state == s.FRIGHTENED) {
 	_state_name = "F";
-} else if (nerd_state == STATE_DEAD) {
+} else if (nerd_state == s.DEAD) {
 	_state_name = "D";
 }
 
@@ -51,12 +55,18 @@ var _target_y = 0;
 var _has_target = false;
 var _col = c_green;
 
-if (nerd_state == STATE_SCATTER) {
+if (nerd_state == s.OUT_BOX) {
+	// OUT_BOX mode: target is box exit point
+	_target_x = box_exit_x;
+	_target_y = box_exit_y;
+	_has_target = true;
+	_col = c_yellow;
+} else if (nerd_state == s.SCATTER) {
 	// Scatter mode: target is scatter corner
 	_target_x = scatter_x;
 	_target_y = scatter_y;
 	_has_target = true;
-} else if (nerd_state == STATE_CHASE) {
+} else if (nerd_state == s.CHASE) {
 	if (instance_exists(oFlipMan)) {
 		// Chase mode: target depends on AI type
 		if (ai == red_ghost_ai) {

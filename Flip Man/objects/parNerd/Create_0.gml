@@ -1,11 +1,15 @@
 // State constants
-#macro STATE_CHASE 0
-#macro STATE_SCATTER 1
-#macro STATE_FRIGHTENED 2
-#macro STATE_DEAD 3
+enum s {
+	IN_BOX,
+	OUT_BOX,
+	CHASE,
+	SCATTER,
+	FRIGHTENED,
+	DEAD
+}
 
 // State machine
-nerd_state = STATE_CHASE;
+nerd_state = s.IN_BOX;
 ghost_mode = false; // Kept for backward compatibility during transition
 
 // Speed settings
@@ -25,7 +29,20 @@ is_chase_phase = true; // Track if currently in CHASE phase
 // FRIGHTENED state duration
 frightened_duration = SECOND * 6;
 
+// Box exit point
+box_exit_x = 128;
+box_exit_y = 140;
+
+// Pending frightened flag - set when power pellet is eaten while in IN_BOX/OUT_BOX state
+pending_frightened = false;
+
+// Frightened timer - tracks remaining frightened time (used when alarm[0] is busy with box timer)
+frightened_timer = -1;
+
 ai = red_ghost_ai;
+
+// Don't start alarm until game starts - set to -1 (disabled) initially
+alarm[0] = -1;
 
 // Don't change
 image_speed = 0;

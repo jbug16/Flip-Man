@@ -1,5 +1,5 @@
 // Check if nerd is in FRIGHTENED state
-if (other.nerd_state == STATE_FRIGHTENED) {
+if (other.nerd_state == s.FRIGHTENED) {
 	// Award points for eating frightened nerd
 	global.points += 200;
 	audio_play_sound(sndEatGhost, 1, false);
@@ -8,7 +8,7 @@ if (other.nerd_state == STATE_FRIGHTENED) {
 	
 	// Destroy the nerd (respawn logic will be added later)
 	with (other) {
-		nerd_state = STATE_DEAD;
+		nerd_state = s.DEAD;
 		audio_play_sound(sndGhostBackToBase, 1, false); // needs to loop and only play once, should stop when ghost gets to base
 		instance_destroy();
 	}

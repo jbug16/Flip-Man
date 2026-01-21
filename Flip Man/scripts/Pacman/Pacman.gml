@@ -40,48 +40,12 @@ function LevelRestart() {
 	
 	// Reset all nerds to their starting positions and states
 	// Nerd starting positions from room definition
-	with (oNerdLeonard) {
-		x = 92;
-		y = 140;
-		nerd_state = STATE_CHASE;
+	with (parNerd) {
+		x = xstart;
+		y = ystart;
+		nerd_state = s.IN_BOX;
 		ghost_mode = false;
-		state_timer = chase_duration;
-		is_chase_phase = true;
-		direction = 180;
-		alarm[0] = -1; // Clear any active alarms
-	}
-	
-	with (oNerdHoward) {
-		x = 116;
-		y = 140;
-		nerd_state = STATE_CHASE;
-		ghost_mode = false;
-		state_timer = chase_duration;
-		is_chase_phase = true;
-		direction = 180;
-		alarm[0] = -1; // Clear any active alarms
-	}
-	
-	with (oNerdRaj) {
-		x = 140;
-		y = 140;
-		nerd_state = STATE_CHASE;
-		ghost_mode = false;
-		state_timer = chase_duration;
-		is_chase_phase = true;
-		direction = 180;
-		alarm[0] = -1; // Clear any active alarms
-	}
-	
-	with (oNerdSheldon) {
-		x = 164;
-		y = 140;
-		nerd_state = STATE_CHASE;
-		ghost_mode = false;
-		state_timer = chase_duration;
-		is_chase_phase = true;
-		direction = 180;
-		alarm[0] = -1; // Clear any active alarms
+		alarm[0] = box_wait_time; // Reset box wait timer
 	}
 	
 	// Reset LevelManager to show "Ready!" screen

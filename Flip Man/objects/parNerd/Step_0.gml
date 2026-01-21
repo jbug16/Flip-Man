@@ -5,7 +5,7 @@ if (!oLevelManager.start || oLevelManager.over || oLevelManager.won) exit;
 if (nerd_state == s.DEAD) exit;
 
 // Start box exit timer when game starts (if still in IN_BOX state)
-if (nerd_state == s.IN_BOX && alarm[0] == -1) {
+if (nerd_state == s.IN_BOX && alarm[0] == -1 && oLevelManager.start) {
 	alarm[0] = box_wait_time;
 }
 
@@ -18,6 +18,7 @@ if ((nerd_state == s.IN_BOX || nerd_state == s.OUT_BOX) && frightened_timer > 0)
 		frightened_timer = -1;
 	}
 }
+
 
 // Stay inside box if in IN_BOX state (no movement)
 // But check if they should transition to OUT_BOX when alarm expires
@@ -121,7 +122,6 @@ if (nerd_state == s.CHASE) {
 }
 
 // Collision
-
 move_contact_solid(direction, _current_spd);
 
 // Goes off screen, loop around

@@ -33,6 +33,9 @@ frightened_duration = SECOND * 6;
 box_exit_x = 128;
 box_exit_y = 140;
 
+// How long they are in the box
+box_wait_time = 0;
+
 // Pending frightened flag - set when power pellet is eaten while in IN_BOX/OUT_BOX state
 pending_frightened = false;
 

@@ -6,9 +6,7 @@
   ],
   "managed":true,
   "name":"oNerdHoward",
-  "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"parNerd","path":"objects/parNerd/parNerd.yy",},"propertyId":{"name":"box_wait_time","path":"objects/parNerd/parNerd.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1",},
-  ],
+  "overriddenProperties":[],
   "parent":{
     "name":"Nerds",
     "path":"folders/Objects/Nerds.yy",

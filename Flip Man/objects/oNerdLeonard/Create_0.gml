@@ -11,3 +11,5 @@ sprite_index = nerd_sprite;
 // Scatter corner position - top-right corner
 scatter_x = 256;
 scatter_y = 0;
+
+box_wait_time = SECOND * 3;

@@ -39,13 +39,44 @@ function LevelRestart() {
 	}
 	
 	// Reset all nerds to their starting positions and states
-	// Nerd starting positions from room definition
-	with (parNerd) {
-		x = xstart;
-		y = ystart;
+	with (oNerdHoward) {
+		x = 128; 
+		y = 140;
 		nerd_state = s.IN_BOX;
 		ghost_mode = false;
-		alarm[0] = box_wait_time; // Reset box wait timer
+		pending_frightened = false;
+		frightened_timer = -1;
+		alarm[0] = -1; // Don't set alarm here - let Step event set it when game starts
+	}
+
+	with (oNerdLeonard) {
+		x = 128;
+		y = 164;
+		nerd_state = s.IN_BOX;
+		ghost_mode = false;
+		pending_frightened = false;
+		frightened_timer = -1;
+		alarm[0] = -1; // Don't set alarm here - let Step event set it when game starts
+	}
+
+	with (oNerdRaj) {
+		x = 144;
+		y = 164;
+		nerd_state = s.IN_BOX;
+		ghost_mode = false;
+		pending_frightened = false;
+		frightened_timer = -1;
+		alarm[0] = -1; // Don't set alarm here - let Step event set it when game starts
+	}
+
+	with (oNerdSheldon) {
+		x = 112;
+		y = 164;
+		nerd_state = s.IN_BOX;
+		ghost_mode = false;
+		pending_frightened = false;
+		frightened_timer = -1;
+		alarm[0] = -1; // Don't set alarm here - let Step event set it when game starts
 	}
 	
 	// Reset LevelManager to show "Ready!" screen

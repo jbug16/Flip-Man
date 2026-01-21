@@ -7,8 +7,9 @@ if (nerd_state == s.IN_BOX) {
 		// Don't transition here - let them exit first
 		// frightened_timer continues counting in Step event
 	} else {
-		// Game hasn't started yet, reset alarm to wait again
-		alarm[0] = box_wait_time;
+		// Game hasn't started yet - don't reset alarm, just exit
+		// The Step event will set the alarm when the game starts
+		alarm[0] = -1; // Set to -1 so Step event can set it when game starts
 	}
 } else if (nerd_state == s.FRIGHTENED) {
 	// Return from FRIGHTENED state back to cycle

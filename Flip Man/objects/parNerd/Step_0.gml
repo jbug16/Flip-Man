@@ -121,18 +121,8 @@ if (nerd_state == s.CHASE) {
 }
 
 // Collision
-// Store position before movement to check for door collision
-var _prev_x = x;
-var _prev_y = y;
 
 move_contact_solid(direction, _current_spd);
-
-// Check if we moved through a door (only block if not in OUT_BOX state)
-if (nerd_state != s.OUT_BOX && place_meeting(x, y, oNerdDoor)) {
-	// Revert to previous position
-	x = _prev_x;
-	y = _prev_y;
-}
 
 // Goes off screen, loop around
 if (x < -0) { // LEFT

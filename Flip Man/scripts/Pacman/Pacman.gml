@@ -44,8 +44,6 @@ function LevelRestart() {
 		y = 140;
 		nerd_state = s.IN_BOX;
 		ghost_mode = false;
-		pending_frightened = false;
-		frightened_timer = -1;
 		alarm[0] = -1; // Don't set alarm here - let Step event set it when game starts
 	}
 
@@ -54,8 +52,6 @@ function LevelRestart() {
 		y = 164;
 		nerd_state = s.IN_BOX;
 		ghost_mode = false;
-		pending_frightened = false;
-		frightened_timer = -1;
 		alarm[0] = -1; // Don't set alarm here - let Step event set it when game starts
 	}
 
@@ -64,8 +60,6 @@ function LevelRestart() {
 		y = 164;
 		nerd_state = s.IN_BOX;
 		ghost_mode = false;
-		pending_frightened = false;
-		frightened_timer = -1;
 		alarm[0] = -1; // Don't set alarm here - let Step event set it when game starts
 	}
 
@@ -74,8 +68,6 @@ function LevelRestart() {
 		y = 164;
 		nerd_state = s.IN_BOX;
 		ghost_mode = false;
-		pending_frightened = false;
-		frightened_timer = -1;
 		alarm[0] = -1; // Don't set alarm here - let Step event set it when game starts
 	}
 	

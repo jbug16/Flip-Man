@@ -20,8 +20,6 @@ if (other.nerd_state == s.FRIGHTENED) {
 		alarm[0] = SECOND * 5;
 		// Reset state for respawn
 		ghost_mode = false;
-		pending_frightened = false;
-		frightened_timer = -1;
 	}
 } else {
 	// Nerd is not frightened - player gets hit

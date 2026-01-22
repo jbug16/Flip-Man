@@ -44,12 +44,6 @@ start_y = 0;
 // How long they are in the box
 box_wait_time = 0;
 
-// Pending frightened flag - set when power pellet is eaten while in IN_BOX/OUT_BOX state
-pending_frightened = false;
-
-// Frightened timer - tracks remaining frightened time (used when alarm[0] is busy with box timer)
-frightened_timer = -1;
-
 ai = red_ghost_ai;
 
 // Don't start alarm until game starts - set to -1 (disabled) initially

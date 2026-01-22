@@ -3,9 +3,6 @@ if (nerd_state == s.IN_BOX) {
 	// Transition from IN_BOX to OUT_BOX (only if game has started)
 	if (oLevelManager.start && !oLevelManager.over && !oLevelManager.won) {
 		nerd_state = s.OUT_BOX;
-		// If pending_frightened is set, enemy will transition to FRIGHTENED when they exit
-		// Don't transition here - let them exit first
-		// frightened_timer continues counting in Step event
 	} else {
 		// Game hasn't started yet - don't reset alarm, just exit
 		// The Step event will set the alarm when the game starts

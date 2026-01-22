@@ -6,17 +6,6 @@ if (nerd_state == s.IN_BOX && alarm[0] == -1 && oLevelManager.start) {
 	alarm[0] = box_wait_time;
 }
 
-// Update frightened_timer for enemies in box states (must be before IN_BOX exit check)
-if ((nerd_state == s.IN_BOX || nerd_state == s.OUT_BOX) && frightened_timer > 0) {
-	frightened_timer--;
-	// If timer expires while still in box, clear pending_frightened (missed the window)
-	if (frightened_timer <= 0) {
-		pending_frightened = false;
-		frightened_timer = -1;
-	}
-}
-
-
 // Stay inside box if in IN_BOX state (no movement)
 // But check if they should transition to OUT_BOX when alarm expires
 if (nerd_state == s.IN_BOX) {
@@ -49,9 +38,9 @@ if (nerd_state != s.FRIGHTENED && nerd_state != s.IN_BOX && nerd_state != s.OUT_
 }
 
 // Handle sprite changes based on state
-// Show ghost sprite if FRIGHTENED or if IN_BOX/OUT_BOX with pending_frightened flag
+// Show ghost sprite if FRIGHTENED
 // DEAD state uses normal sprite (not ghost sprite)
-if (nerd_state == s.FRIGHTENED || ((nerd_state == s.IN_BOX || nerd_state == s.OUT_BOX) && pending_frightened)) {
+if (nerd_state == s.FRIGHTENED) {
 	if (sprite_index != ghost_sprite) {
 		sprite_index = ghost_sprite;
 	}
@@ -71,7 +60,7 @@ else _current_spd = spd;
 // SFX
 // Only play sounds for active nerds (not in IN_BOX)
 // Check if any nerds are still FRIGHTENED before deciding what sound to play
-if (nerd_state == s.FRIGHTENED || (nerd_state == s.OUT_BOX && pending_frightened)) {
+if (nerd_state == s.FRIGHTENED) {
 	// This nerd wants frightened sound
 	if (!audio_is_playing(sndGhostFright)) {
 		audio_stop_sound(sndGhostSiren);
@@ -82,7 +71,7 @@ else if (nerd_state != s.IN_BOX) {
 	// This nerd wants siren sound, but only if no other nerds are FRIGHTENED
 	var _any_frightened = false;
 	with (parNerd) {
-		if (nerd_state == s.FRIGHTENED || (nerd_state == s.OUT_BOX && pending_frightened)) {
+		if (nerd_state == s.FRIGHTENED) {
 			_any_frightened = true;
 		}
 	}
@@ -109,24 +98,10 @@ if (nerd_state == s.CHASE) {
 	
 	// Check if enemy has reached exit point
 	if (point_distance(x, y, box_exit_x, box_exit_y) < GRID / 2) {
-		// If pending_frightened flag is set, transition to FRIGHTENED state
-		// Transfer frightened_timer to alarm[0] if timer is still running
-		if (pending_frightened) {
-			nerd_state = s.FRIGHTENED;
-			if (frightened_timer > 0) {
-				alarm[0] = frightened_timer; // Use remaining time
-			} else {
-				alarm[0] = frightened_duration; // Fallback if timer expired
-			}
-			pending_frightened = false; // Clear the flag
-			frightened_timer = -1; // Clear the timer
-			ghost_mode = true; // Keep for backward compatibility
-		} else {
-			// Transition to CHASE state
-			nerd_state = s.CHASE;
-			state_timer = chase_duration;
-			is_chase_phase = true;
-		}
+		// Transition to CHASE state
+		nerd_state = s.CHASE;
+		state_timer = chase_duration;
+		is_chase_phase = true;
 	}
 }
 

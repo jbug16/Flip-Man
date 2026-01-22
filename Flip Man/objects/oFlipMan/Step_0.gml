@@ -48,25 +48,14 @@ if (_toy != noone) {
 	
 	CheckHighscore();
 	
-	// Trigger FRIGHTENED state for all nerds
+	// Trigger FRIGHTENED state for all nerds (skip enemies in box or already frightened)
 	with (parNerd) {
-		if (nerd_state != s.DEAD) {
-			// If enemy is in IN_BOX or OUT_BOX state, set pending_frightened flag
-			// and start frightened_timer (can't use alarm[0] if in IN_BOX as it's used for box timer)
-			if (nerd_state == s.IN_BOX || nerd_state == s.OUT_BOX) {
-				pending_frightened = true;
-				frightened_timer = frightened_duration;
-			}
-			// Otherwise, set FRIGHTENED state immediately and use alarm[0]
-			else if (nerd_state != s.FRIGHTENED) {
-				// Turn around immediately when entering frightened mode
-				direction = (direction + 180) mod 360;
-				nerd_state = s.FRIGHTENED;
-				alarm[0] = frightened_duration;
-				frightened_timer = -1; // Not needed when using alarm
-				ghost_mode = true; // Keep for backward compatibility
-				pending_frightened = false; // Clear flag when transitioning normally
-			}
+		if (nerd_state != s.DEAD && nerd_state != s.IN_BOX && nerd_state != s.OUT_BOX && nerd_state != s.FRIGHTENED) {
+			// Turn around immediately when entering frightened mode
+			direction = (direction + 180) mod 360;
+			nerd_state = s.FRIGHTENED;
+			alarm[0] = frightened_duration;
+			ghost_mode = true; // Keep for backward compatibility
 		}
 	}
 	

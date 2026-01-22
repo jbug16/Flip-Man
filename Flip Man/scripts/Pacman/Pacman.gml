@@ -38,10 +38,23 @@ function LevelRestart() {
 		}
 	}
 	
+	// Boss level: use rLevelBoss positions, reset boss up top with red nerd (Howard)
+	var _is_boss_level = (room == rLevelBoss);
+	if (_is_boss_level && instance_exists(oBoss)) {
+		with (oBoss) {
+			x = 116;
+			y = 140;
+			direction = 180;
+		}
+	}
+
 	// Reset all nerds to their starting positions and states
+	// On boss level use rLevelBoss original positions (red nerd Howard at 140,140)
+	var _howard_x = _is_boss_level ? 140 : 128;
+	var _howard_y = _is_boss_level ? 140 : 140;
 	with (oNerdHoward) {
-		x = 128; 
-		y = 140;
+		x = _howard_x;
+		y = _howard_y;
 		nerd_state = s.IN_BOX;
 		ghost_mode = false;
 		alarm[0] = -1; // Don't set alarm here - let Step event set it when game starts

@@ -9,6 +9,10 @@ if (nerd_state == s.IN_BOX && alarm[0] == -1 && oLevelManager.start) {
 // Stay inside box if in IN_BOX state (no movement)
 // But check if they should transition to OUT_BOX when alarm expires
 if (nerd_state == s.IN_BOX) {
+	// Ensure normal sprite is used when in box
+	if (sprite_index != nerd_sprite) {
+		sprite_index = nerd_sprite;
+	}
 	// Don't exit early - let alarm handler transition to OUT_BOX
 	// But don't process movement or other logic
 	exit;
@@ -104,6 +108,15 @@ if (nerd_state == s.CHASE) {
 		is_chase_phase = true;
 	}
 }
+
+// Update sprite xscale based on horizontal direction
+// Flipped: right (0) = 1, left (180) = -1
+if (direction == 0) {
+	image_xscale = 1; // Moving right
+} else if (direction == 180) {
+	image_xscale = -1; // Moving left
+}
+// For vertical movement (90 up, 270 down), keep current xscale
 
 // Collision — use configurable enemy collision list (see EnemyCollision script)
 var _exclude = [];

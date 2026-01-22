@@ -6,11 +6,11 @@ start_x = x;
 start_y = y;
 
 ai = orange_ghost_ai;
-image_index = 2;
 
-nerd_sprite = sprite_index;
-ghost_sprite = sprite_index;
+nerd_sprite = sTestBlob;
+ghost_sprite = sTestBlob2;
 sprite_index = nerd_sprite;
+image_index = 2;
 
 // Scatter corner position - bottom-left corner
 scatter_x = 0;

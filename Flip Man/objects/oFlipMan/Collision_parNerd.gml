@@ -3,6 +3,34 @@ if (other.nerd_state == s.DEAD || other.nerd_state == s.IN_BOX || other.nerd_sta
 	exit;
 }
 
+// Boss can never be eaten - always hits the player
+if (other.object_index == oBoss) {
+	// Boss hits player
+	audio_stop_all();
+	audio_play_sound(sndPacmanDying, 1, false);
+	
+	// Lives
+	if (global.extra_lives == 0) {
+		// No more drawn lives - this is the "one more try"
+		// Player got hit, so game over
+		with (oLevelManager) {
+			over = true;
+		
+			// Delay for game over text, then go to menu
+			alarm[1] = SECOND * 3;
+		}
+		
+		// Delete player
+		instance_destroy();
+	}
+	else {
+		// Still have drawn lives remaining
+		global.extra_lives--;
+		LevelRestart();
+	}
+	exit;
+}
+
 // Check if nerd is in FRIGHTENED state
 if (other.nerd_state == s.FRIGHTENED) {
 	// Award points for eating frightened nerd
@@ -20,6 +48,10 @@ if (other.nerd_state == s.FRIGHTENED) {
 		alarm[0] = SECOND * 5;
 		// Reset state for respawn
 		ghost_mode = false;
+		// Switch back to normal sprite when sent back to box
+		if (sprite_index != nerd_sprite) {
+			sprite_index = nerd_sprite;
+		}
 	}
 } else {
 	// Nerd is not frightened - player gets hit

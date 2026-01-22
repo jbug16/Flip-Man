@@ -48,9 +48,9 @@ if (_toy != noone) {
 	
 	CheckHighscore();
 	
-	// Trigger FRIGHTENED state for all nerds (skip enemies in box or already frightened)
+	// Trigger FRIGHTENED state for all nerds (skip enemies in box or already frightened, and skip boss)
 	with (parNerd) {
-		if (nerd_state != s.DEAD && nerd_state != s.IN_BOX && nerd_state != s.OUT_BOX && nerd_state != s.FRIGHTENED) {
+		if (object_index != oBoss && nerd_state != s.DEAD && nerd_state != s.IN_BOX && nerd_state != s.OUT_BOX && nerd_state != s.FRIGHTENED) {
 			// Turn around immediately when entering frightened mode
 			direction = (direction + 180) mod 360;
 			nerd_state = s.FRIGHTENED;

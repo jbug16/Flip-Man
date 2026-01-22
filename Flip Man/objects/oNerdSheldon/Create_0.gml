@@ -6,11 +6,11 @@ start_x = x;
 start_y = y;
 
 ai = blue_ghost_ai;
-image_index = 3;
 
-nerd_sprite = sprite_index;
-ghost_sprite = sprite_index;
+nerd_sprite = sTestBlob;
+ghost_sprite = sTestBlob2;
 sprite_index = nerd_sprite;
+image_index = 3;
 
 // Scatter corner position - bottom-right corner
 scatter_x = 256;

@@ -52,6 +52,7 @@ alarm[0] = -1;
 // Don't change
 image_speed = 0;
 direction = 180;
+image_xscale = -1;
 
 nerd_sprite = noone;
 ghost_sprite = noone;

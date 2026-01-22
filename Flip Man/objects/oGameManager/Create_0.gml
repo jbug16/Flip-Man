@@ -14,6 +14,10 @@ global.snacks = 0;
 
 global.dev_mode = true;
 
+// Enemy collision: objects that enemies (nerds/ghosts) collide with.
+// Edit this array to add or remove objects. Use enemy_collision_add() / enemy_collision_remove() at runtime if needed.
+global.enemy_collision_objects = [oWall, oNerdDoor];
+
 // Macros
 #macro print show_debug_message
 #macro SECOND 60

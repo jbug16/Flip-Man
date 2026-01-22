@@ -59,6 +59,7 @@
     {"id":{"name":"rLevelBoss","path":"rooms/rLevelBoss/rLevelBoss.yy",},},
     {"id":{"name":"rMenu","path":"rooms/rMenu/rMenu.yy",},},
     {"id":{"name":"EnemyAI","path":"scripts/EnemyAI/EnemyAI.yy",},},
+    {"id":{"name":"EnemyCollision","path":"scripts/EnemyCollision/EnemyCollision.yy",},},
     {"id":{"name":"Pacman","path":"scripts/Pacman/Pacman.yy",},},
     {"id":{"name":"seqCutscene","path":"sequences/seqCutscene/seqCutscene.yy",},},
     {"id":{"name":"sndEatDot1","path":"sounds/sndEatDot1/sndEatDot1.yy",},},

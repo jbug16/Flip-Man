@@ -130,8 +130,18 @@ if (nerd_state == s.CHASE) {
 	}
 }
 
-// Collision
-move_contact_solid(direction, _current_spd);
+// Collision — use configurable enemy collision list (see EnemyCollision script)
+var _exclude = [];
+if (nerd_state == s.DEAD || nerd_state == s.OUT_BOX) {
+	array_push(_exclude, oNerdDoor); // Dead ghosts and enemies exiting box pass through doors
+} else if (nerd_state == s.FRIGHTENED || nerd_state == s.CHASE || nerd_state == s.SCATTER) {
+	// If enemy just transitioned from OUT_BOX and is still overlapping the door, exclude it
+	// This prevents getting stuck halfway through the door when state changes
+	if (place_meeting(x, y, oNerdDoor)) {
+		array_push(_exclude, oNerdDoor); // Still passing through door, exclude it
+	}
+}
+enemy_move_with_collision(direction, _current_spd, _exclude);
 
 // Goes off screen, loop around
 if (x < -0) { // LEFT

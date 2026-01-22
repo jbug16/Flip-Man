@@ -14,15 +14,14 @@ if (other.nerd_state == s.FRIGHTENED) {
 	// Teleport nerd to box center and set to IN_BOX state for respawn
 	with (other) {
 		// Teleport to box center (all nerds respawn at same position)
-		x = box_exit_x;
-		y = box_exit_y;
+		x = box_center_x;
+		y = box_center_y;
 		nerd_state = s.IN_BOX;
-		alarm[0] = box_wait_time;
+		alarm[0] = SECOND * 5;
 		// Reset state for respawn
 		ghost_mode = false;
 		pending_frightened = false;
 		frightened_timer = -1;
-		audio_play_sound(sndGhostBackToBase, 1, false); // needs to loop and only play once, should stop when ghost gets to base
 	}
 } else {
 	// Nerd is not frightened - player gets hit

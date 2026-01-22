@@ -33,6 +33,10 @@ frightened_duration = SECOND * 6;
 box_exit_x = 128;
 box_exit_y = 140;
 
+// Box center (where nerds respawn)
+box_center_x = 128;
+box_center_y = 164;
+
 // Starting position (will be set in individual enemy Create events)
 start_x = 0;
 start_y = 0;

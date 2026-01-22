@@ -69,15 +69,26 @@ if (nerd_state == s.FRIGHTENED) {
 else _current_spd = spd;
 
 // SFX
-// Play frightened sound if actually FRIGHTENED or if visually frightened (pending_frightened)
-if (nerd_state == s.FRIGHTENED || ((nerd_state == s.IN_BOX || nerd_state == s.OUT_BOX) && pending_frightened)) {
+// Only play sounds for active nerds (not in IN_BOX)
+// Check if any nerds are still FRIGHTENED before deciding what sound to play
+if (nerd_state == s.FRIGHTENED || (nerd_state == s.OUT_BOX && pending_frightened)) {
+	// This nerd wants frightened sound
 	if (!audio_is_playing(sndGhostFright)) {
 		audio_stop_sound(sndGhostSiren);
 		audio_play_sound(sndGhostFright, 1, true);
 	}
 }
-else {
-	if (!audio_is_playing(sndGhostSiren)) {
+else if (nerd_state != s.IN_BOX) {
+	// This nerd wants siren sound, but only if no other nerds are FRIGHTENED
+	var _any_frightened = false;
+	with (parNerd) {
+		if (nerd_state == s.FRIGHTENED || (nerd_state == s.OUT_BOX && pending_frightened)) {
+			_any_frightened = true;
+		}
+	}
+	
+	// Only play siren if no nerds are frightened
+	if (!_any_frightened && !audio_is_playing(sndGhostSiren)) {
 		audio_stop_sound(sndGhostFright);
 		audio_play_sound(sndGhostSiren, 1, true);
 	}

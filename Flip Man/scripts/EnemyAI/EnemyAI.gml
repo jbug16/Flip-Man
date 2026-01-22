@@ -20,7 +20,12 @@ function box_exit_ai() {
 	}
 	// Right in the middle
 	else {
-		direction = 90;
+		show_debug_message("moving up, checking wall: " + string(place_meeting(x, y-2, oWall)));
+		if (!place_meeting(x, y-2, oWall)) {
+			direction = 90;
+		} else {
+			show_debug_message("BLOCKED BY WALL!");
+		}
 	}
 }
 
@@ -84,12 +89,9 @@ function red_ghost_ai() {
 	// Movement
 	var new_dir = -1;
 	var distance_to_flipman = 9999999;
-	
-	// Check at GRID distance to prevent choosing directions that lead to doors
-	var _check_dist = GRID;
 
 	if (direction != 270) { // UP
-		if (!place_meeting(x, y - _check_dist, oWall) && !place_meeting(x, y - _check_dist, oNerdDoor)) {
+		if (!place_meeting(x, y-2, oWall) && !place_meeting(x, y-2, oNerdDoor)) {
 			var _dist = point_distance(x, y-GRID, oFlipMan.x, oFlipMan.y);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 90;
@@ -99,7 +101,7 @@ function red_ghost_ai() {
 	}
 
 	if (direction != 90) { // DOWN
-		if (!place_meeting(x, y + _check_dist, oWall) && !place_meeting(x, y + _check_dist, oNerdDoor)) {
+		if (!place_meeting(x, y+2, oWall) && !place_meeting(x, y+2, oNerdDoor)) {
 			var _dist = point_distance(x, y+GRID, oFlipMan.x, oFlipMan.y);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 270;
@@ -109,7 +111,7 @@ function red_ghost_ai() {
 	}
 
 	if (direction != 0) { // LEFT
-		if (!place_meeting(x - _check_dist, y, oWall) && !place_meeting(x - _check_dist, y, oNerdDoor)) {
+		if (!place_meeting(x-2, y, oWall) && !place_meeting(x-2, y, oNerdDoor)) {
 			var _dist = point_distance(x-GRID, y, oFlipMan.x, oFlipMan.y);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 180;
@@ -119,7 +121,7 @@ function red_ghost_ai() {
 	}
 
 	if (direction != 180) { // RIGHT
-		if (!place_meeting(x + _check_dist, y, oWall) && !place_meeting(x + _check_dist, y, oNerdDoor)) {
+		if (!place_meeting(x+2, y, oWall) && !place_meeting(x+2, y, oNerdDoor)) {
 			var _dist = point_distance(x+GRID, y, oFlipMan.x, oFlipMan.y);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 0;
@@ -145,12 +147,9 @@ function pink_ghost_ai() {
 	
 	var dx = x_dirs[oFlipMan.direction / 90];
 	var dy = y_dirs[oFlipMan.direction / 90];
-	
-	// Check at GRID distance to prevent choosing directions that lead to doors
-	var _check_dist = GRID;
 
 	if (direction != 270) { // UP
-		if (!place_meeting(x, y - _check_dist, oWall) && !place_meeting(x, y - _check_dist, oNerdDoor)) {
+		if (!place_meeting(x, y-2, oWall) && !place_meeting(x, y-2, oNerdDoor)) {
 			var _dist = point_distance(x, y-GRID, oFlipMan.x+dx, oFlipMan.y+dy);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 90;
@@ -160,7 +159,7 @@ function pink_ghost_ai() {
 	}
 
 	if (direction != 90) { // DOWN
-		if (!place_meeting(x, y + _check_dist, oWall) && !place_meeting(x, y + _check_dist, oNerdDoor)) {
+		if (!place_meeting(x, y+2, oWall) && !place_meeting(x, y+2, oNerdDoor)) {
 			var _dist = point_distance(x, y+GRID, oFlipMan.x+dx, oFlipMan.y+dy);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 270;
@@ -170,7 +169,7 @@ function pink_ghost_ai() {
 	}
 
 	if (direction != 0) { // LEFT
-		if (!place_meeting(x - _check_dist, y, oWall) && !place_meeting(x - _check_dist, y, oNerdDoor)) {
+		if (!place_meeting(x-2, y, oWall) && !place_meeting(x-2, y, oNerdDoor)) {
 			var _dist = point_distance(x-GRID, y, oFlipMan.x+dx, oFlipMan.y+dy);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 180;
@@ -180,7 +179,7 @@ function pink_ghost_ai() {
 	}
 
 	if (direction != 180) { // RIGHT
-		if (!place_meeting(x + _check_dist, y, oWall) && !place_meeting(x + _check_dist, y, oNerdDoor)) {
+		if (!place_meeting(x+2, y, oWall) && !place_meeting(x+2, y, oNerdDoor)) {
 			var _dist = point_distance(x+GRID, y, oFlipMan.x+dx, oFlipMan.y+dy);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 0;
@@ -206,12 +205,9 @@ function orange_ghost_ai() {
 		dx = 16;
 		dy = 296;
 	}
-	
-	// Check at GRID distance to prevent choosing directions that lead to doors
-	var _check_dist = GRID;
 
 	if (direction != 270) { // UP
-		if (!place_meeting(x, y - _check_dist, oWall) && !place_meeting(x, y - _check_dist, oNerdDoor)) {
+		if (!place_meeting(x, y-2, oWall) && !place_meeting(x, y-2, oNerdDoor)) {
 			var _dist = point_distance(x, y-GRID, dx, dy);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 90;
@@ -221,7 +217,7 @@ function orange_ghost_ai() {
 	}
 
 	if (direction != 90) { // DOWN
-		if (!place_meeting(x, y + _check_dist, oWall) && !place_meeting(x, y + _check_dist, oNerdDoor)) {
+		if (!place_meeting(x, y+2, oWall) && !place_meeting(x, y+2, oNerdDoor)) {
 			var _dist = point_distance(x, y+GRID, dx, dy);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 270;
@@ -231,7 +227,7 @@ function orange_ghost_ai() {
 	}
 
 	if (direction != 0) { // LEFT
-		if (!place_meeting(x - _check_dist, y, oWall) && !place_meeting(x - _check_dist, y, oNerdDoor)) {
+		if (!place_meeting(x-2, y, oWall) && !place_meeting(x-2, y, oNerdDoor)) {
 			var _dist = point_distance(x-GRID, y, dx, dy);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 180;
@@ -241,7 +237,7 @@ function orange_ghost_ai() {
 	}
 
 	if (direction != 180) { // RIGHT
-		if (!place_meeting(x + _check_dist, y, oWall) && !place_meeting(x + _check_dist, y, oNerdDoor)) {
+		if (!place_meeting(x+2, y, oWall) && !place_meeting(x+2, y, oNerdDoor)) {
 			var _dist = point_distance(x+GRID, y, dx, dy);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 0;
@@ -273,12 +269,9 @@ function blue_ghost_ai() {
 	
 	dx -= ddx;
 	dy -= ddy;
-	
-	// Check at GRID distance to prevent choosing directions that lead to doors
-	var _check_dist = GRID;
 
 	if (direction != 270) { // UP
-		if (!place_meeting(x, y - _check_dist, oWall) && !place_meeting(x, y - _check_dist, oNerdDoor)) {
+		if (!place_meeting(x, y-2, oWall) && !place_meeting(x, y-2, oNerdDoor)) {
 			var _dist = point_distance(x, y-GRID, dx, dy);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 90;
@@ -288,7 +281,7 @@ function blue_ghost_ai() {
 	}
 
 	if (direction != 90) { // DOWN
-		if (!place_meeting(x, y + _check_dist, oWall) && !place_meeting(x, y + _check_dist, oNerdDoor)) {
+		if (!place_meeting(x, y+2, oWall) && !place_meeting(x, y+2, oNerdDoor)) {
 			var _dist = point_distance(x, y+GRID, dx, dy);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 270;
@@ -298,7 +291,7 @@ function blue_ghost_ai() {
 	}
 
 	if (direction != 0) { // LEFT
-		if (!place_meeting(x - _check_dist, y, oWall) && !place_meeting(x - _check_dist, y, oNerdDoor)) {
+		if (!place_meeting(x-2, y, oWall) && !place_meeting(x-2, y, oNerdDoor)) {
 			var _dist = point_distance(x-GRID, y, dx, dy);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 180;
@@ -308,7 +301,7 @@ function blue_ghost_ai() {
 	}
 
 	if (direction != 180) { // RIGHT
-		if (!place_meeting(x + _check_dist, y, oWall) && !place_meeting(x + _check_dist, y, oNerdDoor)) {
+		if (!place_meeting(x+2, y, oWall) && !place_meeting(x+2, y, oNerdDoor)) {
 			var _dist = point_distance(x+GRID, y, dx, dy);
 			if (_dist < distance_to_flipman) {
 				new_dir	= 0;
@@ -329,12 +322,9 @@ function scatter_ai() {
 	
 	var target_x = scatter_x;
 	var target_y = scatter_y;
-	
-	// Check at GRID distance to prevent choosing directions that lead to doors
-	var _check_dist = GRID;
 
 	if (direction != 270) { // UP
-		if (!place_meeting(x, y - _check_dist, oWall) && !place_meeting(x, y - _check_dist, oNerdDoor)) {
+		if (!place_meeting(x, y-2, oWall) && !place_meeting(x, y-2, oNerdDoor)) {
 			var _dist = point_distance(x, y-GRID, target_x, target_y);
 			if (_dist < distance_to_corner) {
 				new_dir	= 90;
@@ -344,7 +334,7 @@ function scatter_ai() {
 	}
 
 	if (direction != 90) { // DOWN
-		if (!place_meeting(x, y + _check_dist, oWall) && !place_meeting(x, y + _check_dist, oNerdDoor)) {
+		if (!place_meeting(x, y+2, oWall) && !place_meeting(x, y+2, oNerdDoor)) {
 			var _dist = point_distance(x, y+GRID, target_x, target_y);
 			if (_dist < distance_to_corner) {
 				new_dir	= 270;
@@ -354,7 +344,7 @@ function scatter_ai() {
 	}
 
 	if (direction != 0) { // LEFT
-		if (!place_meeting(x - _check_dist, y, oWall) && !place_meeting(x - _check_dist, y, oNerdDoor)) {
+		if (!place_meeting(x-2, y, oWall) && !place_meeting(x-2, y, oNerdDoor)) {
 			var _dist = point_distance(x-GRID, y, target_x, target_y);
 			if (_dist < distance_to_corner) {
 				new_dir	= 180;
@@ -364,7 +354,7 @@ function scatter_ai() {
 	}
 
 	if (direction != 180) { // RIGHT
-		if (!place_meeting(x + _check_dist, y, oWall) && !place_meeting(x + _check_dist, y, oNerdDoor)) {
+		if (!place_meeting(x+2, y, oWall) && !place_meeting(x+2, y, oNerdDoor)) {
 			var _dist = point_distance(x+GRID, y, target_x, target_y);
 			if (_dist < distance_to_corner) {
 				new_dir	= 0;
@@ -383,33 +373,30 @@ function frightened_ai() {
 	var choices = [];
 	var number_of_choices = 0;
 	
-	// Check at GRID distance to prevent choosing directions that lead to doors
-	var _check_dist = GRID;
-	
 	// Check all directions (can't reverse direction)
 	if (direction != 270) { // UP
-		if (!place_meeting(x, y - _check_dist, oWall) && !place_meeting(x, y - _check_dist, oNerdDoor)) {
+		if (!place_meeting(x, y-2, oWall) && !place_meeting(x, y-2, oNerdDoor)) {
 			choices[number_of_choices] = 90;
 			++number_of_choices;
 		}
 	}
 	
 	if (direction != 90) { // DOWN
-		if (!place_meeting(x, y + _check_dist, oWall) && !place_meeting(x, y + _check_dist, oNerdDoor)) {
+		if (!place_meeting(x, y+2, oWall) && !place_meeting(x, y+2, oNerdDoor)) {
 			choices[number_of_choices] = 270;
 			++number_of_choices;
 		}
 	}
 	
 	if (direction != 0) { // LEFT
-		if (!place_meeting(x - _check_dist, y, oWall) && !place_meeting(x - _check_dist, y, oNerdDoor)) {
+		if (!place_meeting(x-2, y, oWall) && !place_meeting(x-2, y, oNerdDoor)) {
 			choices[number_of_choices] = 180;
 			++number_of_choices;
 		}
 	}
 	
 	if (direction != 180) { // RIGHT
-		if (!place_meeting(x + _check_dist, y, oWall) && !place_meeting(x + _check_dist, y, oNerdDoor)) {
+		if (!place_meeting(x+2, y, oWall) && !place_meeting(x+2, y, oNerdDoor)) {
 			choices[number_of_choices] = 0;
 			++number_of_choices;
 		}

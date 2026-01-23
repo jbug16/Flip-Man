@@ -54,7 +54,16 @@ if (nerd_state == s.FRIGHTENED) {
 	if (sprite_index != ghost_sprite) {
 		sprite_index = ghost_sprite;
 	}
+	
+	var _time_left = alarm_get(0);
+	if (_time_left < frightened_duration/3) {
+		_tmp++;
+		if (_tmp % 10 == 0) image_blend = c_white;
+		else image_blend = c_black;
+	}
 } else {
+	_tmp = 0;
+	image_blend = c_white;
 	if (sprite_index != nerd_sprite) {
 		sprite_index = nerd_sprite;
 	}

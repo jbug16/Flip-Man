@@ -28,6 +28,7 @@ is_chase_phase = true; // Track if currently in CHASE phase
 
 // FRIGHTENED state duration
 frightened_duration = SECOND * 6;
+_tmp = 0;
 
 // Box exit point
 box_exit_x = 128;

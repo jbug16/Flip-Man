@@ -125,7 +125,6 @@ if (nerd_state == s.CHASE) {
 }
 
 // Update sprite xscale based on horizontal direction
-// Flipped: right (0) = 1, left (180) = -1
 if (direction == 0) {
 	image_xscale = -1; // Moving right
 } else if (direction == 180) {

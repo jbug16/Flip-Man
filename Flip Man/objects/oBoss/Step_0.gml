@@ -1,12 +1,26 @@
 // Don't move if game hasn't started or is over
-if (!oLevelManager.start || oLevelManager.over || oLevelManager.won) exit;
+if (!oLevelManager.start || oLevelManager.over || oLevelManager.won) {
+	image_speed = 0;
+	exit;
+}
 
 var _m = spd;
 var _g = GRID;
 
+image_speed = 1;
+
+// Update sprite xscale based on horizontal direction
+if (direction == 0) {
+	image_xscale = -1; // Moving right
+} else if (direction == 180) {
+	image_xscale = 1; // Moving left
+}
+
 if (nerd_state == s.FRIGHTENED) {
 	// Frightened: random movement at same speed (no slowdown)
 	sprite_index = ghost_sprite;
+	image_blend = c_green;
+	
 	var choices = [];
 	var n = 0;
 	if (direction != 270 && enemy_direction_clear(x, y - _m, x, y - _g, []) ) { choices[n++] = 90; }

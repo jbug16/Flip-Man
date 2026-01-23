@@ -64,6 +64,11 @@ switch (room) {
 		_name = "ToyzaRius";
 		_index = 2;
 		break;
+		
+	case rLevelBoss:
+		_name = "ToyzaRius";
+		_index = 2;
+		break;
 	
 	default:
 		_name = "ERROR";

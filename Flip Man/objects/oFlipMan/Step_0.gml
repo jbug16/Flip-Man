@@ -1,5 +1,8 @@
 // Don't move if game hasn't started or is over
-if (!oLevelManager.start || oLevelManager.over || oLevelManager.won) exit;
+if (!oLevelManager.start || oLevelManager.over || oLevelManager.won) {
+	image_speed = 0;
+	exit;
+}
 
 // Coins
 var _coin = collision_rectangle(x-6, y-4, x+6, y+4, oCoin, false, false);

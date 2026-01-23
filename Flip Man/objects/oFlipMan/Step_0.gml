@@ -19,9 +19,30 @@ if (_coin != noone) {
 	
 	// Check if this was the last coin
 	if (instance_number(oCoin) <= 0) {
-		oLevelManager.won = true;
-		audio_stop_all();
-		oLevelManager.alarm[2] = SECOND * 2;
+		// Boss level: boss goes frightened; player must eat boss to win
+		if (room == rLevelBoss && instance_exists(oBoss)) {
+			audio_stop_all();
+			audio_play_sound(sndGhostFright, 1, true);
+			with (oBoss) {
+				nerd_state = s.FRIGHTENED;
+				direction = (direction + 180) mod 360;
+				alarm[0] = 999999; // No timeout; stay frightened until eaten
+				sprite_index = ghost_sprite;
+			}
+			// All other enemies (nerds) also go frightened
+			with (parNerd) {
+				if (object_index != oBoss && nerd_state != s.DEAD && nerd_state != s.IN_BOX && nerd_state != s.OUT_BOX && nerd_state != s.FRIGHTENED) {
+					direction = (direction + 180) mod 360;
+					nerd_state = s.FRIGHTENED;
+					alarm[0] = 999999; // Stay frightened until boss is eaten
+					ghost_mode = true;
+				}
+			}
+		} else {
+			oLevelManager.won = true;
+			audio_stop_all();
+			oLevelManager.alarm[2] = SECOND * 2;
+		}
 	}
 	
 	return;
@@ -69,31 +90,27 @@ if (keyboard_check(vk_left)) {
 	if (!place_meeting(x-2, y, oWall) && !place_meeting(x-2, y, oNerdDoor)) {
 		direction = 180;
 		image_xscale = 1;
-		image_speed = 1;
 	}
 }
 if (keyboard_check(vk_right)) {
 	if (!place_meeting(x+2, y, oWall) && !place_meeting(x+2, y, oNerdDoor)) {
 		direction = 0;
 		image_xscale = -1;
-		image_speed = 1;
 	}
 }
 if (keyboard_check(vk_up)) {
 	if (!place_meeting(x, y-2, oWall) && !place_meeting(x, y-2, oNerdDoor)) {
 		direction = 90;
-		image_speed = 1;
 	}
 }
 if (keyboard_check(vk_down)) {
 	if (!place_meeting(x, y+2, oWall) && !place_meeting(x, y+2, oNerdDoor)) {
 		direction = 270;
-		image_speed = 1;
 	}
 }
 
 // Collision
-// Store position before movement to check for door collision
+// Store position before movement to check for door collision and movement
 var _prev_x = x;
 var _prev_y = y;
 
@@ -104,6 +121,14 @@ if (place_meeting(x, y, oNerdDoor)) {
 	// Revert to previous position
 	x = _prev_x;
 	y = _prev_y;
+}
+
+// Check if player actually moved - if not, stop animation
+var _moved = (x != _prev_x || y != _prev_y);
+if (_moved) {
+	image_speed = 1;
+} else {
+	image_speed = 0;
 }
 
 // Goes off screen, loop around

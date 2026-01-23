@@ -7,10 +7,9 @@ start_y = y;
 
 ai = blue_ghost_ai;
 
-nerd_sprite = sTestBlob;
-ghost_sprite = sTestBlob2;
+nerd_sprite = sNerdSheldon;
+ghost_sprite = sGhostSheldon;
 sprite_index = nerd_sprite;
-image_index = 3;
 
 // Scatter corner position - bottom-right corner
 scatter_x = 256;

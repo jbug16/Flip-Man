@@ -7,10 +7,9 @@ start_y = y;
 
 ai = pink_ghost_ai;
 
-nerd_sprite = sTestBlob;
-ghost_sprite = sTestBlob2;
+nerd_sprite = sNerdLeonard;
+ghost_sprite = sGhostLeonard;
 sprite_index = nerd_sprite;
-image_index = 1;
 
 // Scatter corner position - top-right corner
 scatter_x = 256;

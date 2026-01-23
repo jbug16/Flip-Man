@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sTestBlob",
-    "path":"sprites/sTestBlob/sTestBlob.yy",
+    "name":"sNerdSheldon",
+    "path":"sprites/sNerdSheldon/sNerdSheldon.yy",
   },
   "spriteMaskId":null,
   "visible":true,

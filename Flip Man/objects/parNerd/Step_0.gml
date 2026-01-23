@@ -1,5 +1,8 @@
 // Don't move if game hasn't started or is over
-if (!oLevelManager.start || oLevelManager.over || oLevelManager.won) exit;
+if (!oLevelManager.start || oLevelManager.over || oLevelManager.won) {
+	image_speed = 0; 
+	exit; 
+}
 
 // Start box exit timer when game starts (if still in IN_BOX state)
 if (nerd_state == s.IN_BOX && alarm[0] == -1 && oLevelManager.start) {
@@ -13,6 +16,9 @@ if (nerd_state == s.IN_BOX) {
 	if (sprite_index != nerd_sprite) {
 		sprite_index = nerd_sprite;
 	}
+	// Stop animation when in box
+	image_index = 0;
+	image_speed = 0;
 	// Don't exit early - let alarm handler transition to OUT_BOX
 	// But don't process movement or other logic
 	exit;
@@ -112,9 +118,9 @@ if (nerd_state == s.CHASE) {
 // Update sprite xscale based on horizontal direction
 // Flipped: right (0) = 1, left (180) = -1
 if (direction == 0) {
-	image_xscale = 1; // Moving right
+	image_xscale = -1; // Moving right
 } else if (direction == 180) {
-	image_xscale = -1; // Moving left
+	image_xscale = 1; // Moving left
 }
 // For vertical movement (90 up, 270 down), keep current xscale
 
@@ -137,4 +143,19 @@ if (x < -0) { // LEFT
 }
 else if (x > room_width) { // RIGHT
 	x = 0;
+}
+
+// Animation
+switch (nerd_state) {
+	case s.IN_BOX:
+	case s.DEAD:
+		image_speed = 0;
+		break;
+		
+	case s.CHASE:
+	case s.FRIGHTENED:
+	case s.OUT_BOX:
+	case s.SCATTER:
+		image_speed = 1;
+		break;
 }

@@ -4,10 +4,9 @@ event_inherited();
 start_x = x;
 start_y = y;
 
-nerd_sprite = sTestBlob;
-ghost_sprite = sTestBlob2;
+nerd_sprite = sNerdHoward;
+ghost_sprite = sGhostHoward;
 sprite_index = nerd_sprite;
-image_index = 0;
 
 // Scatter corner position - top-left corner
 scatter_x = 0;

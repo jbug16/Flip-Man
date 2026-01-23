@@ -3,28 +3,30 @@ if (other.nerd_state == s.DEAD || other.nerd_state == s.IN_BOX || other.nerd_sta
 	exit;
 }
 
-// Boss can never be eaten - always hits the player
 if (other.object_index == oBoss) {
-	// Boss hits player
+	// Boss frightened (all dots eaten): eating boss wins the level
+	if (other.nerd_state == s.FRIGHTENED) {
+		global.points += 200;
+		audio_stop_all();
+		audio_play_sound(sndEatGhost, 1, false);
+		CheckHighscore();
+		instance_destroy(other);
+		with (oLevelManager) {
+			won = true;
+			alarm[2] = SECOND * 2;
+		}
+		exit;
+	}
+	// Boss not frightened - hits the player
 	audio_stop_all();
 	audio_play_sound(sndPacmanDying, 1, false);
-	
-	// Lives
 	if (global.extra_lives == 0) {
-		// No more drawn lives - this is the "one more try"
-		// Player got hit, so game over
 		with (oLevelManager) {
 			over = true;
-		
-			// Delay for game over text, then go to menu
 			alarm[1] = SECOND * 3;
 		}
-		
-		// Delete player
 		instance_destroy();
-	}
-	else {
-		// Still have drawn lives remaining
+	} else {
 		global.extra_lives--;
 		LevelRestart();
 	}

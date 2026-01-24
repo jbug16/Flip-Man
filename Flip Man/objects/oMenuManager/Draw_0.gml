@@ -4,7 +4,7 @@ var _score_y = 8;
 var _score_line_spacing = 12;
 var _logo_y = 100;
 var _insert_coin_y = room_height / 2;
-var _copyright_y = 255;
+var _copyright_y = 240;
 var _copyright_line_spacing = 15;
 
 // Colors
@@ -49,15 +49,20 @@ draw_set_font(fntUI);
 draw_set_halign(fa_center);
 draw_set_valign(fa_top);
 
-// "namco®" in red
+// "NEFARITY GAMES (R)" in red
 draw_set_color(_color_red);
-draw_text(_center_x, _copyright_y, "namco");
-draw_text(_center_x+25, _copyright_y-4, "®");
+var _nefarity_text = "NEFARITY GAMES";
+var _nefarity_width = string_width(_nefarity_text);
+draw_text(_center_x, _copyright_y, _nefarity_text);
+draw_set_halign(fa_left);
+draw_text(_center_x + (_nefarity_width / 2) + 4, _copyright_y - 4, "®");
+draw_set_halign(fa_center);
 
 draw_set_color(c_white);
-draw_text(_center_x, _copyright_y + _copyright_line_spacing, "TM & © 1980 1993 NAMCO LTD.");
-draw_text(_center_x, _copyright_y + (_copyright_line_spacing * 2), "NAMCO HOMETEK, INC.");
-draw_text(_center_x, _copyright_y + (_copyright_line_spacing * 3), "LICENSED BY NINTENDO");
+draw_text(_center_x, _copyright_y + _copyright_line_spacing, "TM 1984 HATTER TOYS LLC.");
+draw_text(_center_x, _copyright_y + (_copyright_line_spacing * 2), "FLIP-OR and the Champions");
+draw_text(_center_x, _copyright_y + (_copyright_line_spacing * 3), "of Nefarity TM");
+draw_text(_center_x, _copyright_y + (_copyright_line_spacing * 4), "Licensed by Hatter Toys");
 
 
 // Reset settings

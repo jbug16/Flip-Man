@@ -1,4 +1,6 @@
 // Snack spawning logic
+if (impact_pause) exit;
+
 // First snack spawns at 70 coins eaten
 if (coins_eaten == 70 && !snack_spawned_first && snack_active == noone) {
 	snack_active = instance_create_layer(128, 236, "Coins", oSnack);

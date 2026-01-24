@@ -1,5 +1,5 @@
 // Don't move if game hasn't started or is over
-if (!oLevelManager.start || oLevelManager.over || oLevelManager.won) {
+if (!oLevelManager.start || oLevelManager.over || oLevelManager.won || oLevelManager.impact_pause) {
 	image_speed = 0; 
 	exit; 
 }
@@ -58,8 +58,8 @@ if (nerd_state == s.FRIGHTENED) {
 	var _time_left = alarm_get(0);
 	if (_time_left < frightened_duration/3) {
 		_tmp++;
-		if (_tmp % 10 == 0) image_blend = c_white;
-		else image_blend = c_black;
+		// Flash white instead of black (Pac-Man style) — white/light-gray alternate keeps them visible
+		image_blend = (_tmp % 10 == 0) ? c_white : c_green;
 	}
 } else {
 	_tmp = 0;

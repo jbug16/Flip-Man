@@ -22,6 +22,8 @@ if (other.object_index == oBoss) {
 		with (oLevelManager) {
 			won = true;
 			alarm[2] = SECOND * 2;
+			impact_pause = true;
+			alarm[3] = floor(SECOND * 0.3);
 		}
 		exit;
 	}
@@ -63,6 +65,8 @@ if (other.nerd_state == s.FRIGHTENED) {
 			sprite_index = nerd_sprite;
 		}
 	}
+	oLevelManager.impact_pause = true;
+	oLevelManager.alarm[3] = floor(SECOND * 0.3);
 } else {
 	// Nerd is not frightened - player gets hit
 	audio_stop_all();

@@ -3,6 +3,14 @@ if (other.nerd_state == s.DEAD || other.nerd_state == s.IN_BOX || other.nerd_sta
 	exit;
 }
 
+// Distance check: ensure sprites are actually visually overlapping before processing collision
+// Both sprites are 16x16, so 8 pixels (half sprite size) ensures they're touching
+var _collision_threshold = 8;
+var _distance = point_distance(x, y, other.x, other.y);
+if (_distance > _collision_threshold) {
+	exit; // Too far apart, ignore collision
+}
+
 if (other.object_index == oBoss) {
 	// Boss frightened (all dots eaten): eating boss wins the level
 	if (other.nerd_state == s.FRIGHTENED) {

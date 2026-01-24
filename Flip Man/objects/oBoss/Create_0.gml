@@ -1,6 +1,6 @@
 event_inherited();
 
-spd = 0.9;
+spd = 0.75;
 
 // Sprites for normal vs frightened (blue/vulnerable) state
 nerd_sprite = sBoss;

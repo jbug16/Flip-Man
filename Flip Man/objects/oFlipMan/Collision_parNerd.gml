@@ -18,6 +18,13 @@ if (other.object_index == oBoss) {
 		audio_stop_all();
 		audio_play_sound(sndEatGhost, 1, false);
 		CheckHighscore();
+		
+		// Create floating point text
+		var _point_text = instance_create_layer(other.x, other.y, "Instances", oPointText);
+		with (_point_text) {
+			point_value = 200;
+		}
+		
 		instance_destroy(other);
 		with (oLevelManager) {
 			won = true;
@@ -50,6 +57,12 @@ if (other.nerd_state == s.FRIGHTENED) {
 	audio_play_sound(sndEatGhost, 1, false);
 	
 	CheckHighscore();
+	
+	// Create floating point text
+	var _point_text = instance_create_layer(other.x, other.y, "Instances", oPointText);
+	with (_point_text) {
+		point_value = 200;
+	}
 	
 	// Teleport nerd to box center and set to IN_BOX state for respawn
 	with (other) {

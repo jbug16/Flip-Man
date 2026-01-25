@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.9655555,
+  "duration":8.4,
   "exportDir":"",
   "name":"sndHighscore",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sndHighscore.wav",
+  "soundFile":"sndHighscore.mp3",
   "volume":1.0,
 }

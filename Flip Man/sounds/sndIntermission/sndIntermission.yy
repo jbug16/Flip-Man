@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":5.28,
+  "duration":11.363265,
   "exportDir":"",
   "name":"sndIntermission",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sndIntermission.wav",
+  "soundFile":"sndIntermission.mp3",
   "volume":1.0,
 }

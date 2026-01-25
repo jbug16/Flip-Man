@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.38408163,
+  "duration":5.112018,
   "exportDir":"",
   "name":"sndEatFruit",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sndEatFruit.wav",
+  "soundFile":"sndEatFruit.mp3",
   "volume":1.0,
 }

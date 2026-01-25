@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.08287982,
+  "duration":0.57469386,
   "exportDir":"",
   "name":"sndEatDot2",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sndEatDot2.wav",
+  "soundFile":"sndEatDot2.mp3",
   "volume":1.0,
 }

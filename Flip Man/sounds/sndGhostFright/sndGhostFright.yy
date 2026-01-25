@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.0560317,
+  "duration":0.2629932,
   "exportDir":"",
   "name":"sndGhostFright",
   "parent":{
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"sndGhostFright.wav",
-  "volume":1.0,
+  "volume":0.5,
 }

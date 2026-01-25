@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":4.2145805,
+  "duration":3.84,
   "exportDir":"",
   "name":"sndStartup",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sndStartup.wav",
+  "soundFile":"sndStartup.mp3",
   "volume":1.0,
 }

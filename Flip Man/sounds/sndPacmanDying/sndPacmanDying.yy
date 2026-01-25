@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":2.949161,
+  "duration":3.0720181,
   "exportDir":"",
   "name":"sndPacmanDying",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sndPacmanDying.wav",
+  "soundFile":"sndPacmanDying.mp3",
   "volume":1.0,
 }

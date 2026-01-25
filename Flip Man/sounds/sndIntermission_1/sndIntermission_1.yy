@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sndGhostBackToBase",
+  "%Name":"sndIntermission_1",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.24743764,
+  "duration":8.0979595,
   "exportDir":"",
-  "name":"sndGhostBackToBase",
+  "name":"sndIntermission_1",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sndGhostBackToBase.wav",
+  "soundFile":"sndIntermission_1.mp3",
   "volume":1.0,
 }

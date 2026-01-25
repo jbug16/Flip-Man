@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.52546483,
+  "duration":1.0080045,
   "exportDir":"",
   "name":"sndEatGhost",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sndEatGhost.wav",
+  "soundFile":"sndEatGhost.mp3",
   "volume":1.0,
 }

@@ -6,7 +6,11 @@ draw_set_valign(fa_middle);
 draw_set_halign(fa_center);
 
 // Text
-if (ready) {
+if (paused) {
+	draw_set_color(c_yellow);
+	draw_text(_mid_x, _mid_y, "PAUSED");
+}
+else if (ready) {
 	draw_set_color(c_yellow);
 	draw_text(_mid_x, _mid_y, "READY!");
 }

@@ -1,5 +1,5 @@
 // Don't move if game hasn't started or is over
-if (!oLevelManager.start || oLevelManager.over || oLevelManager.won || oLevelManager.impact_pause) {
+if (!oLevelManager.start || oLevelManager.over || oLevelManager.won || oLevelManager.impact_pause || oLevelManager.paused) {
 	image_speed = 0;
 	exit;
 }

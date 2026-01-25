@@ -1,5 +1,5 @@
 // Snack spawning logic
-if (impact_pause) exit;
+if (impact_pause || paused) exit;
 
 // First snack spawns at 70 coins eaten
 if (coins_eaten == 70 && !snack_spawned_first && snack_active == noone) {

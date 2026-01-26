@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sndIntermission_1",
+  "%Name":"sndIntermission1",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -12,7 +12,7 @@
   "conversionMode":0,
   "duration":8.0979595,
   "exportDir":"",
-  "name":"sndIntermission_1",
+  "name":"sndIntermission1",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sndIntermission_1.mp3",
+  "soundFile":"sndIntermission1.mp3",
   "volume":1.0,
 }

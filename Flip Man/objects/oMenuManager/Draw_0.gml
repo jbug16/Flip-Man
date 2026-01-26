@@ -1,5 +1,38 @@
-// Check if tutorial should be shown
-if (show_tutorial) {
+// Check if we're in the credits room
+if (room == rCredits) {
+	// CREDITS SCREEN
+	var _center_x = room_width / 2;
+	var _start_y = 60;
+	var _line_spacing = 20;
+	
+	draw_set_font(fntTitle);
+	draw_set_color(make_color_rgb(255, 200, 0)); // Bright orange-yellow like title
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_top);
+	
+	// FLIP-MAN (R)
+	var _title_text = "FLIP-MAN";
+	var _title_width = string_width(_title_text);
+	draw_text(_center_x-4, _start_y, _title_text);
+	draw_set_font(fntUI);
+	draw_set_halign(fa_left);
+	draw_text(_center_x + (_title_width / 2) + 2, _start_y + 4, "®");
+	draw_set_halign(fa_center);
+	
+	// Credits text
+	draw_set_font(fntUI);
+	draw_set_color(c_white);
+	var _credits_y = _start_y + 80;
+	draw_text(_center_x, _credits_y, "Created by Nir 'Mad Hatter' Paniry");
+	draw_text(_center_x, _credits_y + _line_spacing, "Produced by Ralph Andino");
+	draw_text(_center_x, _credits_y + (_line_spacing * 2), "Art by Ray Robinson");
+	draw_text(_center_x, _credits_y + (_line_spacing * 3), "Programming by Jenna Curls");
+	
+	// Reset settings
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_top);
+	draw_set_color(c_white);
+} else if (show_tutorial) {
 	// TUTORIAL SCREEN (scores are already drawn by oUIManager)
 	var _center_x = room_width / 2;
 	var _light_blue = make_color_rgb(135, 206, 250); // Light blue color

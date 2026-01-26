@@ -4,6 +4,22 @@ if (!oLevelManager.start || oLevelManager.over || oLevelManager.won || oLevelMan
 	exit; 
 }
 
+// Safety check: If enemy is in box area but state is wrong, reset them
+// Only check states that should NEVER be in the box: CHASE, SCATTER, FRIGHTENED
+// Allow IN_BOX, DEAD, and OUT_BOX (enemies exiting are still in box area)
+if (nerd_state != s.IN_BOX && nerd_state != s.DEAD && nerd_state != s.OUT_BOX) {
+	if (place_meeting(x, y, oBox)) {
+		// Enemy is in box but state is wrong - reset them
+		x = box_center_x;
+		y = box_center_y;
+		nerd_state = s.IN_BOX;
+		alarm[0] = -1; // Reset alarm so Step event can set it when game starts
+		sprite_index = nerd_sprite; // Ensure correct sprite
+		image_index = 0;
+		image_speed = 0;
+	}
+}
+
 // Start box exit timer when game starts (if still in IN_BOX state)
 if (nerd_state == s.IN_BOX && alarm[0] == -1 && oLevelManager.start) {
 	alarm[0] = box_wait_time;

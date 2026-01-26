@@ -2,8 +2,8 @@
 var _center_x = room_width / 2;
 var _score_y = 8;
 var _score_line_spacing = 12;
-var _logo_y = 100;
-var _insert_coin_y = room_height / 2;
+var _logo_y = 80;
+var _insert_coin_y = room_height / 2 - 20;
 var _copyright_y = 240;
 var _copyright_line_spacing = 15;
 
@@ -21,7 +21,7 @@ draw_set_valign(fa_middle);
 var _title_text = "FLIP-MAN";
 var _title_width = string_width(_title_text);
 
-draw_sprite_ext(sTitleBG, 0, _center_x, _logo_y, 13, 3, 0, c_white, 1);
+//draw_sprite_ext(sTitleBG, 0, _center_x, _logo_y, 13, 3, 0, c_white, 1);
 draw_text(_center_x, _logo_y, _title_text);
 
 // TM symbol
@@ -43,6 +43,13 @@ if (_text_visible) {
     draw_text(_center_x, _insert_coin_y, "INSERT COIN");
 }
 
+
+// Tagline (above copyright)
+draw_set_font(fntUI);
+draw_set_color(c_white);
+draw_set_halign(fa_center);
+draw_set_valign(fa_top);
+draw_text(_center_x, _copyright_y - _copyright_line_spacing, "The greatest toy flipper in the world!");
 
 // Copyright (bottom)
 draw_set_font(fntUI);

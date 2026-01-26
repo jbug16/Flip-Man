@@ -2,8 +2,9 @@
 arrow_blink += 0.1;
 
 // Check for any key press to start game
-if (keyboard_check_pressed(vk_anykey)) {
-    // Start game
-    room_goto(rLevel1);
-    audio_play_sound(sndStartup, 1, false);
+if (keyboard_check_pressed(vk_anykey) && !show_tutorial) {
+    // Start tutorial
+	layer_set_visible("Assets", false)
+    show_tutorial = true;
+	alarm[0] = SECOND * 18; // 18 seconds
 }

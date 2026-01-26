@@ -61,8 +61,6 @@ if (_snack != noone) {
 	// Clear snack_active reference and destroy snack
 	oLevelManager.snack_active = noone;
 	instance_destroy(_snack);
-	
-	return;
 }
 
 // Toys

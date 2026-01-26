@@ -29,7 +29,7 @@ if (room == rMenu) exit; // only draws in levels
 var _left_x = 24;
 var _right_x = room_width - 26;
 var _bottom_y = 308;
-var _spacing = 16;
+var _spacing = 18;
 
 // Lives
 repeat (global.extra_lives) {

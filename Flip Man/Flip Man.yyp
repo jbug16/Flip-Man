@@ -58,6 +58,7 @@
     {"id":{"name":"rCutscence1","path":"rooms/rCutscence1/rCutscence1.yy",},},
     {"id":{"name":"rCutscence2","path":"rooms/rCutscence2/rCutscence2.yy",},},
     {"id":{"name":"rCutscence3","path":"rooms/rCutscence3/rCutscence3.yy",},},
+    {"id":{"name":"rCutscence4","path":"rooms/rCutscence4/rCutscence4.yy",},},
     {"id":{"name":"rInit","path":"rooms/rInit/rInit.yy",},},
     {"id":{"name":"rLevel1","path":"rooms/rLevel1/rLevel1.yy",},},
     {"id":{"name":"rLevel2","path":"rooms/rLevel2/rLevel2.yy",},},
@@ -119,6 +120,7 @@
     {"roomId":{"name":"rCutscence2","path":"rooms/rCutscence2/rCutscence2.yy",},},
     {"roomId":{"name":"rCutscence3","path":"rooms/rCutscence3/rCutscence3.yy",},},
     {"roomId":{"name":"rCredits","path":"rooms/rCredits/rCredits.yy",},},
+    {"roomId":{"name":"rCutscence4","path":"rooms/rCutscence4/rCutscence4.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

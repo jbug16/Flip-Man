@@ -26,3 +26,10 @@ if (room == rCutscence3) {
 	// Animation done
 	alarm[2] = SECOND * (audio_sound_length(sndIntermission3));
 }
+
+// Highscore cutscene
+if (room == rCutscence4) {
+	// No background music for this cutscene
+	// Just show text for a few seconds
+	alarm[3] = SECOND * 5; // Show for 3 seconds
+}

@@ -1,7 +1,7 @@
 // Check if we're in credits room
 if (room == rCredits) {
-	// Credits finished, restart the game
-	game_restart();
+	// Credits finished, go back to menu screen
+	room_goto(rMenu);
 } else {
 	// Tutorial finished, go to first level
 	show_tutorial = false;

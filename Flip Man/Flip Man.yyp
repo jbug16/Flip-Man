@@ -70,6 +70,7 @@
     {"id":{"name":"Pacman","path":"scripts/Pacman/Pacman.yy",},},
     {"id":{"name":"seqCutscene1","path":"sequences/seqCutscene1/seqCutscene1.yy",},},
     {"id":{"name":"seqCutscene2","path":"sequences/seqCutscene2/seqCutscene2.yy",},},
+    {"id":{"name":"seqTutorial","path":"sequences/seqTutorial/seqTutorial.yy",},},
     {"id":{"name":"sndEatDot1","path":"sounds/sndEatDot1/sndEatDot1.yy",},},
     {"id":{"name":"sndEatDot2","path":"sounds/sndEatDot2/sndEatDot2.yy",},},
     {"id":{"name":"sndEatFruit","path":"sounds/sndEatFruit/sndEatFruit.yy",},},

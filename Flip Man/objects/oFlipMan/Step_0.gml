@@ -87,6 +87,25 @@ if (_toy != noone) {
 }
 
 // Controls
+if (touch_one_move && touch_direction != -1) {
+	var _d = touch_direction;
+	if (_d == 180 && !place_meeting(x - 2, y, oWall) && !place_meeting(x - 2, y, oNerdDoor)) {
+		direction = 180;
+		image_xscale = 1;
+	}
+	else if (_d == 0 && !place_meeting(x + 2, y, oWall) && !place_meeting(x + 2, y, oNerdDoor)) {
+		direction = 0;
+		image_xscale = -1;
+	}
+	else if (_d == 90 && !place_meeting(x, y - 2, oWall) && !place_meeting(x, y - 2, oNerdDoor)) {
+		direction = 90;
+	}
+	else if (_d == 270 && !place_meeting(x, y + 2, oWall) && !place_meeting(x, y + 2, oNerdDoor)) {
+		direction = 270;
+	}
+	touch_one_move = false;
+	touch_direction = -1;
+}
 if (keyboard_check(vk_left)) {
 	if (!place_meeting(x-2, y, oWall) && !place_meeting(x-2, y, oNerdDoor)) {
 		direction = 180;

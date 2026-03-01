@@ -1,5 +1,9 @@
 spd = 1;
 
+// Touch controls (tap/swipe)
+touch_direction = -1;
+touch_one_move = false;
+
 // SFX
 beat_highscore = false;
 wa = sndEatDot1;

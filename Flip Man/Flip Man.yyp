@@ -37,6 +37,7 @@
     {"id":{"name":"fntUI","path":"fonts/fntUI/fntUI.yy",},},
     {"id":{"name":"oBoss","path":"objects/oBoss/oBoss.yy",},},
     {"id":{"name":"oBox","path":"objects/oBox/oBox.yy",},},
+    {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"oCoin","path":"objects/oCoin/oCoin.yy",},},
     {"id":{"name":"oCutsceneManager","path":"objects/oCutsceneManager/oCutsceneManager.yy",},},
     {"id":{"name":"oFlipMan","path":"objects/oFlipMan/oFlipMan.yy",},},

@@ -26,7 +26,7 @@ global.enemy_collision_objects = [oWall, oNerdDoor];
 // Settings
 gpu_set_texfilter(false);
 
-// Size game
+// Size game (for PC)
 window_set_size(512, 640);
 window_center();
 

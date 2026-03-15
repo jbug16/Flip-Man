@@ -1,5 +1,5 @@
 // Snack spawning logic
-if (impact_pause || paused) exit;
+if (impact_pause || global.game_paused) exit;
 
 // Don't spawn snacks if all unique snack types have been collected (5 frames in sprite)
 if (global.snacks >= 5) exit;

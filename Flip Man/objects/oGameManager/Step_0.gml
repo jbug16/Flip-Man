@@ -1,3 +1,8 @@
+// Pause audio when paused
+if (global.game_paused) audio_pause_all();
+else audio_resume_all();
+
+// Dev keys
 if (!global.dev_mode) exit;
 
 // 0 – reset to your current dev size

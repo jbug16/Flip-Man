@@ -12,7 +12,6 @@ snack_active = noone;
 // Draw helpers
 blink_counter = 0;
 impact_pause = false;
-paused = false;
 
 // Delay for game start
 alarm[0] = SECOND * audio_sound_length(sndStartup) - (1.5 * SECOND);

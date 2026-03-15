@@ -1,3 +1,5 @@
+timer = 0;
+
 audio_stop_all();
 
 // First cutscene
@@ -29,7 +31,5 @@ if (room == rCutscence3) {
 
 // Highscore cutscene
 if (room == rCutscence4) {
-	// No background music for this cutscene
-	// Just show text for a few seconds
-	alarm[3] = SECOND * 5; // Show for 3 seconds
+	alarm[3] = SECOND * 5;
 }

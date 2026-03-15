@@ -1,5 +1,5 @@
 // Only when gameplay is active
-if (!oLevelManager.start || oLevelManager.over || oLevelManager.won || oLevelManager.impact_pause || oLevelManager.paused)
+if (!oLevelManager.start || oLevelManager.over || oLevelManager.won || oLevelManager.impact_pause || global.game_paused)
 	exit;
 
 var _posX = event_data[? "posX"];

@@ -1,8 +1,7 @@
 spd = 1;
 
-// Touch controls (tap/swipe)
-touch_direction = -1;
-touch_one_move = false;
+// Touch controls (tap/swipe): queued until the direction can be taken (path opens)
+touch_buffered_dir = -1;
 
 // SFX
 beat_highscore = false;

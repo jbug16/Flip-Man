@@ -86,26 +86,35 @@ if (_toy != noone) {
 	return;
 }
 
-// Controls
-if (touch_one_move && touch_direction != -1) {
-	var _d = touch_direction;
+// Controls — touch buffer is retried until the path allows the turn (or keyboard overrides)
+if (touch_buffered_dir != -1) {
+	var _d = touch_buffered_dir;
+	var _ok = false;
 	if (_d == 180 && !place_meeting(x - 2, y, oWall) && !place_meeting(x - 2, y, oNerdDoor)) {
 		direction = 180;
 		image_xscale = 1;
+		_ok = true;
 	}
 	else if (_d == 0 && !place_meeting(x + 2, y, oWall) && !place_meeting(x + 2, y, oNerdDoor)) {
 		direction = 0;
 		image_xscale = -1;
+		_ok = true;
 	}
 	else if (_d == 90 && !place_meeting(x, y - 2, oWall) && !place_meeting(x, y - 2, oNerdDoor)) {
 		direction = 90;
+		_ok = true;
 	}
 	else if (_d == 270 && !place_meeting(x, y + 2, oWall) && !place_meeting(x, y + 2, oNerdDoor)) {
 		direction = 270;
+		_ok = true;
 	}
-	touch_one_move = false;
-	touch_direction = -1;
+	if (_ok)
+		touch_buffered_dir = -1;
 }
+
+if (keyboard_check(vk_left) || keyboard_check(vk_right) || keyboard_check(vk_up) || keyboard_check(vk_down))
+	touch_buffered_dir = -1;
+
 if (keyboard_check(vk_left)) {
 	if (!place_meeting(x-2, y, oWall) && !place_meeting(x-2, y, oNerdDoor)) {
 		direction = 180;

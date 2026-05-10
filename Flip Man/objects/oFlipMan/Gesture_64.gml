@@ -4,9 +4,17 @@ if (!oLevelManager.start || oLevelManager.over || oLevelManager.won || oLevelMan
 
 var _posX = event_data[? "posX"];
 var _posY = event_data[? "posY"];
-var _angle = point_direction(x, y, _posX, _posY);
-var _a = (round(_angle / 90) * 90) mod 360;
-if (_a == 360) _a = 0;
+var _vx = _posX - x;
+var _vy = _posY - y;
+if (point_distance(0, 0, _vx, _vy) < 8)
+	exit;
 
-touch_direction = _a;
-touch_one_move = true;
+// Dominant axis: more reliable than rounding angle (fewer wrong up/down vs left/right picks)
+var _a;
+if (abs(_vx) >= abs(_vy)) {
+	_a = (_vx >= 0) ? 0 : 180;
+} else {
+	_a = (_vy >= 0) ? 270 : 90;
+}
+
+touch_buffered_dir = _a;

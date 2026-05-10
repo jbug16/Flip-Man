@@ -8,9 +8,11 @@ var _diffY = event_data[? "diffY"];
 if (point_distance(0, 0, _diffX, _diffY) < 8)
 	exit;
 
-var _angle = point_direction(0, 0, _diffX, _diffY);
-var _a = (round(_angle / 90) * 90) mod 360;
-if (_a == 360) _a = 0;
+var _a;
+if (abs(_diffX) >= abs(_diffY)) {
+	_a = (_diffX >= 0) ? 0 : 180;
+} else {
+	_a = (_diffY >= 0) ? 270 : 90;
+}
 
-touch_direction = _a;
-touch_one_move = true;
+touch_buffered_dir = _a;

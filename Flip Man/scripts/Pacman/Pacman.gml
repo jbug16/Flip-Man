@@ -35,6 +35,7 @@ function LevelRestart() {
 			// Reset player direction
 			direction = 180;
 			image_xscale = 1;
+			touch_buffered_dir = -1;
 		}
 	}
 	

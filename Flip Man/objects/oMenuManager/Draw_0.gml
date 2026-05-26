@@ -39,7 +39,8 @@ if (room == rCredits) {
 	var _score_y = 8;
 	var _score_line_spacing = 12;
 	var _logo_y = 80;
-	var _insert_coin_y = room_height / 2 - 20;
+	var _characters_top = 166;
+	var _insert_coin_y = _characters_top - 18;
 	var _copyright_y = 240;
 	var _copyright_line_spacing = 15;
 

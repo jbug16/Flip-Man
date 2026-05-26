@@ -1,6 +1,7 @@
-// Your logical game resolution
+// Logical resolution: 256×368 (playfield y0–319, control strip y320–367)
 global.base_w = 256;
-global.base_h = 320;
+global.base_h = 368;
+global.play_h = 320;
 
 // Actual device resolution
 var disp_w = display_get_width();
@@ -27,8 +28,11 @@ if (display_ratio > base_ratio) {
 var cam = view_camera[0];
 camera_set_view_size(cam, view_w, view_h);
 
-// Center the camera in the room if room is larger than 256x320
-camera_set_view_pos(cam, (room_width - view_w) * 0.5, (room_height - view_h) * 0.5);
+// Top-align view so the maze/HUD stay fixed; extra room height is the bottom control strip
+var _cam_x = max(0, (room_width - view_w) * 0.5);
+var _cam_y = 0;
+if (view_h > room_height)
+	_cam_y = (room_height - view_h) * 0.5;
+camera_set_view_pos(cam, _cam_x, _cam_y);
 
-// GUI: keep UI in 256x320 logical space
 display_set_gui_size(global.base_w, global.base_h);

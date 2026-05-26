@@ -86,57 +86,27 @@ if (_toy != noone) {
 	return;
 }
 
-// Controls — touch buffer is retried until the path allows the turn (or keyboard overrides)
+// Controls — on-screen D-pad, buffered swipe, keyboard
+touch_controls_poll();
+
 if (touch_buffered_dir != -1) {
-	var _d = touch_buffered_dir;
-	var _ok = false;
-	if (_d == 180 && !place_meeting(x - 2, y, oWall) && !place_meeting(x - 2, y, oNerdDoor)) {
-		direction = 180;
-		image_xscale = 1;
-		_ok = true;
-	}
-	else if (_d == 0 && !place_meeting(x + 2, y, oWall) && !place_meeting(x + 2, y, oNerdDoor)) {
-		direction = 0;
-		image_xscale = -1;
-		_ok = true;
-	}
-	else if (_d == 90 && !place_meeting(x, y - 2, oWall) && !place_meeting(x, y - 2, oNerdDoor)) {
-		direction = 90;
-		_ok = true;
-	}
-	else if (_d == 270 && !place_meeting(x, y + 2, oWall) && !place_meeting(x, y + 2, oNerdDoor)) {
-		direction = 270;
-		_ok = true;
-	}
-	if (_ok)
+	if (player_try_turn(touch_buffered_dir))
 		touch_buffered_dir = -1;
 }
 
 if (keyboard_check(vk_left) || keyboard_check(vk_right) || keyboard_check(vk_up) || keyboard_check(vk_down))
 	touch_buffered_dir = -1;
+else if (global.touch_ctrl_pressed_dir == -1 && !device_mouse_check_button(0, mb_left))
+	touch_buffered_dir = -1;
 
-if (keyboard_check(vk_left)) {
-	if (!place_meeting(x-2, y, oWall) && !place_meeting(x-2, y, oNerdDoor)) {
-		direction = 180;
-		image_xscale = 1;
-	}
-}
-if (keyboard_check(vk_right)) {
-	if (!place_meeting(x+2, y, oWall) && !place_meeting(x+2, y, oNerdDoor)) {
-		direction = 0;
-		image_xscale = -1;
-	}
-}
-if (keyboard_check(vk_up)) {
-	if (!place_meeting(x, y-2, oWall) && !place_meeting(x, y-2, oNerdDoor)) {
-		direction = 90;
-	}
-}
-if (keyboard_check(vk_down)) {
-	if (!place_meeting(x, y+2, oWall) && !place_meeting(x, y+2, oNerdDoor)) {
-		direction = 270;
-	}
-}
+if (keyboard_check(vk_left))
+	player_try_turn(180);
+if (keyboard_check(vk_right))
+	player_try_turn(0);
+if (keyboard_check(vk_up))
+	player_try_turn(90);
+if (keyboard_check(vk_down))
+	player_try_turn(270);
 
 // Collision
 // Store position before movement to check for door collision and movement

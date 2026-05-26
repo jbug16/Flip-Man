@@ -2,6 +2,9 @@
 if (!oLevelManager.start || oLevelManager.over || oLevelManager.won || oLevelManager.impact_pause || global.game_paused)
 	exit;
 
+if (device_mouse_y_to_gui(0) >= global.play_h)
+	exit;
+
 var _diffX = event_data[? "diffX"];
 var _diffY = event_data[? "diffY"];
 // Ignore very small flicks

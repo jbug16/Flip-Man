@@ -2,6 +2,9 @@
 if (!oLevelManager.start || oLevelManager.over || oLevelManager.won || oLevelManager.impact_pause || global.game_paused)
 	exit;
 
+if (device_mouse_y_to_gui(0) >= global.play_h)
+	exit;
+
 var _posX = event_data[? "posX"];
 var _posY = event_data[? "posY"];
 var _vx = _posX - x;

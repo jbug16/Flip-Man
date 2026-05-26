@@ -11,6 +11,7 @@ if (file_exists("highscore.ini")) {
 global.points = 0;
 global.extra_lives = 5;
 global.snacks = 0;
+global.touch_ctrl_pressed_dir = -1;
 
 global.dev_mode = true;
 
@@ -22,6 +23,8 @@ global.enemy_collision_objects = [oWall, oNerdDoor];
 #macro print show_debug_message
 #macro SECOND 60
 #macro GRID 16
+#macro TURN_PROBE 4
+#macro LATE_TURN_MAX 10
 
 // Settings
 gpu_set_texfilter(false);

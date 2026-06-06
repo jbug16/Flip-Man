@@ -2,7 +2,7 @@
   "$GMiOSOptions":"v1",
   "%Name":"iOS",
   "name":"iOS",
-  "option_ios_build_number":2,
+  "option_ios_build_number":1,
   "option_ios_bundle_name":"com.toy.flipman",
   "option_ios_defer_home_indicator":false,
   "option_ios_devices":2,
@@ -43,7 +43,7 @@
   "option_ios_splashscreen_background_colour":255,
   "option_ios_team_id":"",
   "option_ios_texture_page":"2048x2048",
-  "option_ios_version":"1.0.0.0",
+  "option_ios_version":"1.0.1",
   "resourceType":"GMiOSOptions",
   "resourceVersion":"2.0",
 }

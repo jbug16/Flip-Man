@@ -1,3 +1,54 @@
+/// @description True when the player can accept swipe / cached input.
+function player_input_gameplay_active() {
+	if (room == rMenu)
+		return false;
+	if (!instance_exists(oLevelManager) || !instance_exists(oFlipMan))
+		return false;
+	if (!oLevelManager.start || oLevelManager.over || oLevelManager.won || oLevelManager.impact_pause)
+		return false;
+	if (global.game_paused)
+		return false;
+	return true;
+}
+
+/// @description Screen-space swipe delta → direction (dominant axis). -1 if too small.
+function player_swipe_dir_from_delta(_dx, _dy) {
+	if (point_distance(0, 0, _dx, _dy) < SWIPE_MIN)
+		return -1;
+	if (abs(_dx) >= abs(_dy))
+		return (_dx >= 0) ? 0 : 180;
+	return (_dy >= 0) ? 270 : 90;
+}
+
+/// @description PM256 cached movement: last swipe wins, kept until replaced (not cleared on finger up).
+function player_cache_dir(_dir) {
+	touch_buffered_dir = _dir;
+}
+
+/// @description Desktop dev — same cached model as swipes (tap keys, do not hold-to-steer).
+function player_poll_cached_keyboard() {
+	var _kb = -1;
+	if (keyboard_check(vk_left))
+		_kb = 180;
+	if (keyboard_check(vk_right))
+		_kb = 0;
+	if (keyboard_check(vk_up))
+		_kb = 90;
+	if (keyboard_check(vk_down))
+		_kb = 270;
+	if (_kb != -1)
+		player_cache_dir(_kb);
+}
+
+/// @description Each frame: turn when the cached direction opens at a junction (or reverse in place).
+function player_apply_cached_turn() {
+	if (touch_buffered_dir == -1)
+		return;
+	if (touch_buffered_dir == direction)
+		return;
+	player_try_turn(touch_buffered_dir);
+}
+
 /// @description Nearest tile center on an axis (8, 24, 40 … for GRID 16).
 function player_nearest_lane_coord(_pos) {
 	return round((_pos - GRID / 2) / GRID) * GRID + GRID / 2;

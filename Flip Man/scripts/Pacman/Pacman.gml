@@ -36,7 +36,6 @@ function LevelRestart() {
 			direction = 180;
 			image_xscale = 1;
 			touch_buffered_dir = -1;
-			global.touch_ctrl_pressed_dir = -1;
 		}
 	}
 	

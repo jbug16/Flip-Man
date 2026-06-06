@@ -1,4 +1,4 @@
-// Flick — fast swipes (PM256 cached movement)
+// Drag end — slow swipes (PM256 cached movement)
 if (!player_input_gameplay_active())
 	exit;
 

@@ -86,27 +86,9 @@ if (_toy != noone) {
 	return;
 }
 
-// Controls — on-screen D-pad, buffered swipe, keyboard
-touch_controls_poll();
-
-if (touch_buffered_dir != -1) {
-	if (player_try_turn(touch_buffered_dir))
-		touch_buffered_dir = -1;
-}
-
-if (keyboard_check(vk_left) || keyboard_check(vk_right) || keyboard_check(vk_up) || keyboard_check(vk_down))
-	touch_buffered_dir = -1;
-else if (global.touch_ctrl_pressed_dir == -1 && !device_mouse_check_button(0, mb_left))
-	touch_buffered_dir = -1;
-
-if (keyboard_check(vk_left))
-	player_try_turn(180);
-if (keyboard_check(vk_right))
-	player_try_turn(0);
-if (keyboard_check(vk_up))
-	player_try_turn(90);
-if (keyboard_check(vk_down))
-	player_try_turn(270);
+// Controls — PM256 cached movement (swipe stores last direction; applied at junctions)
+player_poll_cached_keyboard();
+player_apply_cached_turn();
 
 // Collision
 // Store position before movement to check for door collision and movement

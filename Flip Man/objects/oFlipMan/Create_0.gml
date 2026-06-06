@@ -1,6 +1,6 @@
 spd = 1;
 
-// Touch controls (tap/swipe): queued until the direction can be taken (path opens)
+// PM256 cached movement: last swipe direction (persists until replaced)
 touch_buffered_dir = -1;
 
 // SFX

@@ -67,7 +67,6 @@
     {"id":{"name":"rLevel3","path":"rooms/rLevel3/rLevel3.yy",},},
     {"id":{"name":"rLevelBoss","path":"rooms/rLevelBoss/rLevelBoss.yy",},},
     {"id":{"name":"rMenu","path":"rooms/rMenu/rMenu.yy",},},
-    {"id":{"name":"DrawTouchControls","path":"scripts/DrawTouchControls/DrawTouchControls.yy",},},
     {"id":{"name":"EnemyAI","path":"scripts/EnemyAI/EnemyAI.yy",},},
     {"id":{"name":"EnemyCollision","path":"scripts/EnemyCollision/EnemyCollision.yy",},},
     {"id":{"name":"Pacman","path":"scripts/Pacman/Pacman.yy",},},

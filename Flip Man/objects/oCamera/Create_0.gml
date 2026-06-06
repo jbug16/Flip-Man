@@ -1,7 +1,6 @@
-// Logical resolution: 256×368 (playfield y0–319, control strip y320–367)
+// Logical resolution: 256×320 (full screen is swipe input, PM256-style)
 global.base_w = 256;
-global.base_h = 368;
-global.play_h = 320;
+global.base_h = 320;
 
 // Actual device resolution
 var disp_w = display_get_width();
